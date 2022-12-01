@@ -1,0 +1,6 @@
+@import url('./reset.css');
+
+:root {
+  font-size: 22px;
+  font-family: 'Roboto', sans-serif;
+}

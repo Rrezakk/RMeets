@@ -1,0 +1,14 @@
+.wrapper {
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  min-width: 350px;
+  gap: 20px;
+}

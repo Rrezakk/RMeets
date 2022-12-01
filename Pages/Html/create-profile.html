@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/largeForm.css" />
+    <title>Create profile</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form method="POST">
+        <h2>Создать профиль</h2>
+        <input name="login" placeholder="Имя" required />
+        <input name="login" placeholder="Возраст" required />
+        <select name="gender" required>
+          <option value="" disabled selected>Пол</option>
+          <option value="male">Мужской</option>
+          <option value="female">Женский</option>
+        </select>
+        <select name="city">
+          <option value="" disabled selected>Город</option>
+          <option value="moscow">Москва</option>
+          <option value="rostov">Ростов</option>
+          <option value="saint petersburg">Санкт Петербург</option>
+        </select>
+        <input type="submit" value="Создать" />
+        <a href="home.html">На главную</a>
+      </form>
+    </div>
+  </body>
+</html>

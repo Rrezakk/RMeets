@@ -1,0 +1,31 @@
+textarea {
+  min-height: 150px;
+  resize: none;
+}
+
+.forms {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  width: 1000px;
+}
+
+select {
+  width: 100%;
+}
+
+.photos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+}
+
+.photos > form {
+  min-width: unset;
+}
+
+.photos img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}

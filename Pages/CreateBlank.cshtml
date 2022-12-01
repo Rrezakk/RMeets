@@ -1,0 +1,86 @@
+﻿@page "{Handler?}"
+@model RMeets.Pages.CreateBlank
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/global.css" />
+    <link rel="stylesheet" href="~/css/largeForm.css" />
+    <link rel="stylesheet" href="~/css/createBlank.css" />
+    <title>Create profile</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form method="POST">
+        <h2>Создать анкету</h2>
+        <textarea name="about" placeholder="Обо мне" required></textarea>
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Пол</option>
+          @{
+            var genders = Model.ApplicationContext.Genders.Select(x => x);
+            foreach (var gender in genders)
+            {
+              <option value=@gender.Id>@gender.Name</option>
+            }
+          }
+        </select>
+        <select id="target" name="target" required>
+          <option value="" disabled selected>Цель знакомства</option>
+          @{
+            var targets = Model.ApplicationContext.Targets.Select(x => x);
+            foreach (var target in targets)
+            {
+              <option value=@target.Id>@target.Name</option>
+            }
+          }
+        </select>
+        <div>
+          <h4>Интересы</h4>
+          <select name="interests" id="interests" required multiple>
+            <option value="travel">Путешествия</option>
+            <option value="animals">Животные</option>
+            <option value="cooking">Кулинария</option>
+            <option value="games">Игры</option>
+          </select>
+        </div>
+        <div>
+          <h4>Интересные факты</h4>
+          <select for="facts" name="facts" id="facts" required multiple>
+            <option value="travel">Я лидер в любой ситуации</option>
+            <option value="animals">Я плохо готовлю</option>
+            <option value="cooking">Я не умею плавать</option>
+            <option value="games">У меня есть мечта</option>
+          </select>
+          <a>
+            <button type="button" id="submitFacts">Подтвердить</button>
+          </a>
+          <p id="factsSelectedData" name="factsSelectedData"></p>
+          <script>
+          document.querySelector("button#submitFacts").addEventListener("click", (event) => {
+            event.preventDefault();
+          }, false);
+                  let data = document.getElementById('factsSelectedData');
+                  document.getElementById('submitFacts').onclick = function(){
+                    let values = document.getElementById('facts').val();
+                    data.innerText = values.join(',');
+                    return false;
+                  } ;
+          </script>
+        </div>
+        <input type="submit" asp-page-handler="CreateBlank" value="Создать" />
+       
+        @*<a href="home.html">На главную</a>*@
+      </form>
+    </div>
+  </body>
+</html>

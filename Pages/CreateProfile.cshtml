@@ -1,0 +1,53 @@
+﻿@page "{handler?}"
+@using RMeets.Contexts
+@model RMeets.Pages.CreateProfile
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/global.css" />
+    <link rel="stylesheet" href="~/css/largeForm.css" />
+    <title>Create profile</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form method="POST">
+        <h2>Создать профиль</h2>
+        <input name="name" placeholder="Имя" required />
+        <input name="age" type="number" placeholder="Возраст" required />
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Пол</option>
+          @{
+            var genders = Model.ApplicationContext.Genders.AsQueryable().Select(x => x);
+            foreach (var gender in genders)
+            {
+              <option value=@gender.Id>@gender.Name</option>
+            }
+          }
+        </select>
+        <select id="city" name="city">
+          <option value="" disabled selected>Город</option>
+          @{
+            var cities = Model.ApplicationContext.Cities.AsQueryable().Select(x => x);
+            foreach (var city in cities)
+            {
+              <option value=@city.Id>@city.Name</option>
+            }
+          }
+        </select>
+        <input type="submit" asp-page-handler="PerformCreation" value="Создать" />
+        @*<a href="home.html">На главную</a>*@
+      </form>
+    </div>
+  </body>
+</html>

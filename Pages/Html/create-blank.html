@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/largeForm.css" />
+    <link rel="stylesheet" href="/css/createBlank.css" />
+    <title>Create profile</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <form method="POST">
+        <h2>Создать анкету</h2>
+        <textarea name="about" placeholder="Обо мне" required></textarea>
+        <select name="gender" required>
+          <option value="" disabled selected>Пол</option>
+          <option value="male">Мужской</option>
+          <option value="female">Женский</option>
+        </select>
+        <select name="target" required>
+          <option value="" disabled selected>Цель знакомства</option>
+          <option value="slavery">Рабство</option>
+          <option value="cats">Уход за котом</option>
+        </select>
+        <div>
+          <h4>Интересы</h4>
+          <select name="interests" required multiple>
+            <option value="travel">Путешествия</option>
+            <option value="animals">Животные</option>
+            <option value="cooking">Кулинария</option>
+            <option value="games">Игры</option>
+          </select>
+        </div>
+        <div>
+          <h4>Интересные факты</h4>
+          <select name="interests" required multiple>
+            <option value="travel">Я лидер в любой ситуации</option>
+            <option value="animals">Я плохо готовлю</option>
+            <option value="cooking">Я не умею плавать</option>
+            <option value="games">У меня есть мечта</option>
+          </select>
+        </div>
+        <input type="submit" value="Создать" />
+        <a href="home.html">На главную</a>
+      </form>
+    </div>
+  </body>
+</html>

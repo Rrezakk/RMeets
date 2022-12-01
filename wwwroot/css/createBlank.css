@@ -1,0 +1,12 @@
+textarea {
+  min-height: 150px;
+  resize: none;
+}
+
+form {
+  min-width: 550px;
+}
+
+select {
+  width: 100%;
+}
