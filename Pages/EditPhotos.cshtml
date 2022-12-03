@@ -1,4 +1,4 @@
-﻿@page "{id}/{handler?}"
+﻿@page "{handler?}"
 @model RMeets.Pages.AddPhotos
 
 @{
@@ -13,7 +13,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="~/css/global.css" />
     <link rel="stylesheet" href="~/css/largeForm.css" />
     <link rel="stylesheet" href="~/css/editPhoto.css" />
@@ -25,17 +25,28 @@
         <h2>Редактировать фото</h2>
         <div class="photos">
           <!-- foreach photo -->
-          <form method="POST">
-            <input name="type" value="delete" hidden />
-            <input name="id" value="айди фото" hidden />
-            <img src="assets/cat.jpg" />
-            <input type="submit" value="Удалить фото" />
-          </form>
+          @{
+                      var photoRecords = from photo in Model.ApplicationContext.BlankPhotos where photo.BlankId == Model.blankId select photo;
+                      foreach (var photo in photoRecords)
+                      {
+                        <form method="POST" asp-page-handler="Delete">
+                          <input name="photoId" value="@photo.Id" hidden />
+                          <input name="blankId" value="@photo.BlankId" hidden/>
+                          <img src="@photo.Url" alt=""/>
+                          <input type="submit" value="Удалить фото" />
+                        </form>
+                      }
+                    }
+          
         </div>
-        <form method="POST">
-          <input name="type" value="upload" hidden />
-          <input type="file" required />
+        <form asp-page-handler="Add" method="post" enctype="multipart/form-data">
+          <input type="file" asp-for="Upload" required />
+          <input name="blankId" id="blankId" value="@Model.blankId" hidden/>
           <input type="submit" value="Загрузить" />
+        </form>
+        <form asp-page-handler="Consume" method="get">
+           <input name="blankId" id="blankId" value="@Model.blankId" hidden/>
+          <input type="submit" value="Просмотреть анкету"/>
         </form>
       </div>
     </div>

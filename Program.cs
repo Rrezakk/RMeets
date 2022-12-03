@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using RMeets.Contexts;
+using RMeets.Middlewares.ChechAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,11 +12,10 @@ builder.Services.AddSession(options =>
     options.IdleTimeout = TimeSpan.FromMinutes(60);
     options.Cookie.IsEssential = true;
 });
-builder.Services.AddDbContext<ApplicationContext>(options => options.UseNpgsql("Server=localhost;Port=5432;Database=RMeets;User Id=postgres;Password=admin;"));
+builder.Services.AddDbContext<ApplicationContext>(options => 
+    options.UseNpgsql("Server=localhost;Port=5432;Database=RMeets;User Id=postgres;Password=admin;").EnableSensitiveDataLogging().UseLazyLoadingProxies(),ServiceLifetime.Singleton);
 builder.Services.AddHttpContextAccessor();
-
 var app = builder.Build();
-
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
@@ -25,11 +25,8 @@ if (!app.Environment.IsDevelopment())
 app.UseSession();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
-app.UseAuthorization();
-
+app.UseAccessUrl();
+//app.UseAuthorization();
 app.MapRazorPages();
-
 app.Run();

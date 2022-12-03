@@ -16,10 +16,7 @@ namespace RMeets.Contexts
         public DbSet<Interest> Interests { get; set; }
         public DbSet<Profile> Profiles { get; set; }
         public DbSet<Reaction> Reactions { get; set; }
-        public DbSet<ReactionType> ReactionTypes { get; set; }
         public DbSet<Role> Roles { get; set; }
-        public DbSet<SocialMedia> SocialMedias { get; set; }
-        public DbSet<MediaProfileLink> SocialMediaProfileLinks { get; set; }
         public DbSet<Target> Targets { get; set; }
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)
@@ -32,6 +29,22 @@ namespace RMeets.Contexts
                 .HasOne(a => a.Profile)
                 .WithOne(b => b.User)
                 .HasForeignKey<Profile>(b => b.UserRef);
+               
+                
+            modelBuilder.Entity<Blank>().HasOne(p => p.Target)
+                .WithMany(t => t.Blanks)
+                .HasForeignKey(p => p.TargetId);
+            modelBuilder.Entity<Blank>().HasOne(p => p.CurrentGender)
+                .WithMany(t => t.Blanks)
+                .HasForeignKey(p => p.CurrentGenderId);
+            modelBuilder.Entity<Blank>().HasOne(p => p.Profile)
+                .WithMany(t => t.Blanks)
+                .HasForeignKey(p => p.ProfileId);
+            modelBuilder.Entity<BlankPhoto>().HasOne(p => p.Blank)
+                .WithMany(t => t.Photos)
+                .HasForeignKey(p => p.BlankId);
+           
+            
             modelBuilder.ApplyUtcDateTimeConverter();//Put before seed data and after model creation
         }
     }

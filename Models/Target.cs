@@ -11,4 +11,5 @@ public class Target
     public string Name { get; set; }
     [Required]
     public int TimesUsed { get; set; }
+    public virtual ICollection<Blank>? Blanks { get; set; }
 }

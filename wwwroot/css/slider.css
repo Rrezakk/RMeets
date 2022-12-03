@@ -1,0 +1,119 @@
+.cssSlider {
+  display: block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.cssSlider .slides {
+  overflow: hidden;
+  overflow: hidden;
+  width: 100%;
+  height: 350px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.cssSlider .slides > li {
+  width: 100%;
+  height: 300px;
+  position: absolute;
+  z-index: 1;
+  overflow: hidden;
+}
+/*
+.cssSlider .slides > li:first-child:not(:target) {
+	z-index: 1;
+	-webkit-transform: translateY(0%);
+	        transform: translateY(0%);
+}
+*/
+.cssSlider .thumbnails {
+  display: block;
+  position: relative;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+.cssSlider .thumbnails > li {
+  float: left;
+  width: 20%;
+}
+
+.cssSlider .thumbnails > li > a {
+  display: block;
+}
+img {
+  object-fit: contain !important;
+  height: 100%;
+  width: 100%;
+}
+.cssSlider .thumbnails > li > a > img {
+  object-fit: contain;
+}
+
+.cssSlider .slides ul li {
+  position: relative;
+}
+
+.cssSlider .slides li img::before {
+  content: '';
+  position: absolute !important;
+  left: 0;
+  top: 0;
+  width: 200px;
+  height: 200px;
+  background-color: #fff;
+  z-index: 100000;
+}
+
+.cssSlider .slides li:target {
+  z-index: 3;
+  -webkit-animation: slide 1s 1;
+}
+.cssSlider .slides li:not(:target) {
+  -webkit-animation: hidden 1s 1;
+}
+@-webkit-keyframes slide {
+  0% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+@keyframes slide {
+  0% {
+    -webkit-transform: translateX(-100%);
+    transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+}
+@-webkit-keyframes hidden {
+  0% {
+    z-index: 2;
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  100% {
+    z-index: 2;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}
+@keyframes hidden {
+  0% {
+    z-index: 2;
+    -webkit-transform: translateX(0%);
+    transform: translateX(0%);
+  }
+  100% {
+    z-index: 2;
+    -webkit-transform: translateX(100%);
+    transform: translateX(100%);
+  }
+}

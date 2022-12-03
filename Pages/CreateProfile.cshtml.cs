@@ -18,27 +18,32 @@ public class CreateProfile : PageModel
     {
         
     }
-    public IActionResult OnPostPerformCreation(string name,int age,int city,int gender)
+    public IActionResult OnPostPerformCreation(string name,int age,int city,int gender,string contact)
     {
         var sU = _httpContextAccessor.HttpContext?.Session.GetString("user");
         var user = ApplicationContext.Users.FirstOrDefault(u => u.Login == sU);
         var gen = ApplicationContext.Genders.FirstOrDefault(g => g.Id == gender);
         var cit = ApplicationContext.Cities.FirstOrDefault(c => c.Id == city);
         var role = ApplicationContext.Roles.FirstOrDefault(r => r.Name == "user");
-        var profile = new Models.Profile(userRef:user.Id,name,gen,age,cit,DateTime.Now,role );
+        var profile = new Models.Profile()
+        {
+            UserRef = user.Id,
+            Name = name,
+            Gender = gen,
+            Age = age,
+            City = cit,
+            RegistrationTimestamp = DateTime.Now,
+            Role = role,
+            SocialMediaLink = contact
+        };
 
         var p = ApplicationContext.Profiles.FirstOrDefault(p => p.User == user);
         if (p != null)
             return Content("Profile already exists");
-        
-        ApplicationContext.Profiles.Add(profile);
+        var res = ApplicationContext.Profiles.Add(profile);
         ApplicationContext.SaveChanges();
-        //user.Profile
-        //var gender = Request.Form["gender"];
-        //var city = Request.Form["city"];
         Debug.WriteLine($"Name: {name} Age: {age} Gender: {gender} City: {city}");
         //if all valid
-        return RedirectToPage("Blanks");
-        //return RedirectToPage($"EditPhotos/{profile.Id}");
+        return RedirectToPage("Blanks",new{profileId = res.Entity.Id});
     }
 }

@@ -1,4 +1,4 @@
-﻿@page
+﻿@page "{handler?}"
 @model RMeets.Pages.Blanks
 
 @{
@@ -6,14 +6,56 @@
 }
 
 <!DOCTYPE html>
-
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-<div>
-    <a asp-page="CreateBlank">Создать анкету</a>
-</div>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/largeForm.css" />
+    <link rel="stylesheet" href="/css/tables.css" />
+    <link rel="stylesheet" href="/css/blanks.css" />
+    <title>Blanks</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <table>
+          <thead>
+          <tr>
+            <td>ID</td>
+            <td>Цель</td>
+            <td>Действия</td>
+          </tr>
+          </thead>
+          <tbody>
+          @{
+            var id = 0;
+            var blanks = Model.ApplicationContext.Blanks.Where(b => b.ProfileId == Model.ProfileId);
+            var targets = Model.ApplicationContext.Targets.ToList();
+            foreach (var b in blanks)
+            {
+              <tr>
+                <td>@id</td>
+                <td>@targets.FirstOrDefault(x=>x.Id==b.TargetId)?.Name</td>
+                <td>
+                  <a asp-page="ViewBlank" asp-route-blankId="@b.Id"><button >Посмотреть</button></a>
+                  <a asp-page="EditBlank" asp-route-blankId="@b.Id"><button >Изменить</button></a>
+                  @*<a asp-page="ViewBlank" asp-route-blankId="@b.Id"><button >Обзор</button></a>*@
+                </td>
+              </tr>
+              id++;
+            }
+          }
+          </tbody>
+        </table>
+        <form>
+          <button asp-page="CreateBlank">Создать новую анкету</button>
+        </form>
+      </div>
+    </div>
+  </body>
 </html>

@@ -10,16 +10,25 @@ public class Blank
     [MaxLength(300)]
     public string Description { get; set; }
     [Required]
-    public Gender CurrentGender { get; set; }
+    public int CurrentGenderId { get; set; }
     [Required]
-    public Target Target { get; set; } 
+    public virtual Gender? CurrentGender { get; set; }
     [Required]
-    public Profile Profile { get; set; }
+    public virtual Target? Target { get; set; }
     [Required]
-    public ICollection<BlankPhoto> Photos { get; set; }
+    public int TargetId { get; set; }
+    [Required]
+    public virtual Profile? Profile { get; set; }
+    [Required]
+    public int ProfileId { get; set; }
+    [Required]
+    public virtual ICollection<BlankPhoto> Photos { get; set; }
     [Required]
     public virtual ICollection<Interest> Interests { get; set; }
     [Required]
     public virtual ICollection<Fact> Facts { get; set; }
     public bool Moderated { get; set; } = false;
+    public Blank()
+    {
+    }
 }

@@ -35,7 +35,7 @@
             }
           }
         </select>
-        <select id="city" name="city">
+        <select id="city" name="city" required>
           <option value="" disabled selected>Город</option>
           @{
             var cities = Model.ApplicationContext.Cities.AsQueryable().Select(x => x);
@@ -45,8 +45,8 @@
             }
           }
         </select>
+        <input name="contact" placeholder="Ссылка на соцсеть" required />
         <input type="submit" asp-page-handler="PerformCreation" value="Создать" />
-        @*<a href="home.html">На главную</a>*@
       </form>
     </div>
   </body>

@@ -1,4 +1,4 @@
-﻿@page "{Handler?}"
+﻿@page "{handler?}/{id?}"
 @model RMeets.Pages.CreateBlank
 
 @{
@@ -17,14 +17,14 @@
     <link rel="stylesheet" href="~/css/global.css" />
     <link rel="stylesheet" href="~/css/largeForm.css" />
     <link rel="stylesheet" href="~/css/createBlank.css" />
-    <title>Create profile</title>
+    <title>Create blank</title>
   </head>
   <body>
     <div class="wrapper">
-      <form method="POST">
+      <form method="POST" asp-page-handler="CreateById" asp-route-id="@Model.ProfileId"> 
         <h2>Создать анкету</h2>
         <textarea name="about" placeholder="Обо мне" required></textarea>
-        <select id="gender" name="gender" required>
+        <select id="genderId" name="genderId" required>
           <option value="" disabled selected>Пол</option>
           @{
             var genders = Model.ApplicationContext.Genders.Select(x => x);
@@ -34,7 +34,7 @@
             }
           }
         </select>
-        <select id="target" name="target" required>
+        <select id="targetId" name="targetId" required>
           <option value="" disabled selected>Цель знакомства</option>
           @{
             var targets = Model.ApplicationContext.Targets.Select(x => x);
@@ -46,38 +46,23 @@
         </select>
         <div>
           <h4>Интересы</h4>
-          <select name="interests" id="interests" required multiple>
-            <option value="travel">Путешествия</option>
-            <option value="animals">Животные</option>
-            <option value="cooking">Кулинария</option>
-            <option value="games">Игры</option>
+          <select name="interestIds" id="interestIds" required multiple>
+            @foreach (var interest in Model.ApplicationContext.Interests.Select(x => x))
+            {
+              <option value="@interest.Id">@interest.Name</option>
+            }
           </select>
         </div>
         <div>
           <h4>Интересные факты</h4>
-          <select for="facts" name="facts" id="facts" required multiple>
-            <option value="travel">Я лидер в любой ситуации</option>
-            <option value="animals">Я плохо готовлю</option>
-            <option value="cooking">Я не умею плавать</option>
-            <option value="games">У меня есть мечта</option>
+          <select for="factIds" name="factIds" id="factIds" required multiple>
+            @foreach (var fact in Model.ApplicationContext.Facts.Select(x => x))
+            {
+              <option value="@fact.Id">@fact.Name</option>
+            }
           </select>
-          <a>
-            <button type="button" id="submitFacts">Подтвердить</button>
-          </a>
-          <p id="factsSelectedData" name="factsSelectedData"></p>
-          <script>
-          document.querySelector("button#submitFacts").addEventListener("click", (event) => {
-            event.preventDefault();
-          }, false);
-                  let data = document.getElementById('factsSelectedData');
-                  document.getElementById('submitFacts').onclick = function(){
-                    let values = document.getElementById('facts').val();
-                    data.innerText = values.join(',');
-                    return false;
-                  } ;
-          </script>
         </div>
-        <input type="submit" asp-page-handler="CreateBlank" value="Создать" />
+        <input type="submit" value="Создать" />
        
         @*<a href="home.html">На главную</a>*@
       </form>

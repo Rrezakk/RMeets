@@ -1,0 +1,73 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.slider {
+  position: relative;
+  width: 500px;
+}
+
+.swiper {
+  width: 500px;
+  height: 500px;
+}
+
+.blank {
+  display: flex;
+  gap: 15px;
+}
+
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding-left: 30px;
+}
+
+ul {
+  list-style: circle;
+  padding-left: 25px;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.actions {
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 100px;
+}
+
+.action {
+  width: 50px;
+  height: 50px;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.match {
+  display: flex;
+  gap: 15px;
+  align-items: baseline;
+}
+
+.match a {
+  color: rgb(181, 45, 181);
+}

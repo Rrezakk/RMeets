@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RMeets.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace RMeets.Models;
 
@@ -10,5 +11,9 @@ public class BlankPhoto
     [MaxLength(500)]
     public string Url { get; set; }
     [Required]
-    public AccessibilityLevel AccessibilityLevel { get; set; }
+    public int BlankId { get; set; }
+    [Required]
+    public virtual Blank Blank { get; set; }
+    [Required]
+    public virtual AccessibilityLevel AccessibilityLevel { get; set; }
 }

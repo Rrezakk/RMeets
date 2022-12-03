@@ -14,30 +14,19 @@ public class Profile
     [MaxLength(100)]
     public string Name { get; set; }
     [Required]
-    public Gender Gender { get; set; }
+    public virtual Gender Gender { get; set; }
     [Required]
     public int Age { get; set; }
     [Required]
-    public City City { get; set; }
+    public virtual City City { get; set; }
+    public string SocialMediaLink { get; set; }
     [Required]
     public DateTime RegistrationTimestamp { get; set; }
     //Nullable
-    public Role Role { get; set; }
+    public virtual Role Role { get; set; }
+    public virtual ICollection<Blank>? Blanks { get; set; }
     public Profile()
     {
         
     }
-    public Profile(int userRef,
-        string name, Gender gender, int age, City city,
-        DateTime registrationTimestamp, Role role)
-    {
-        UserRef = userRef;
-        Name = name;
-        Gender = gender;
-        Age = age;
-        City = city;
-        RegistrationTimestamp = registrationTimestamp;
-        Role = role;
-    }
-    public ICollection<MediaProfileLink> SocialMediaList { get; set; }
 }

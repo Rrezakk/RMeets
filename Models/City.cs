@@ -9,4 +9,5 @@ public class City
     [Required]
     [MaxLength(100)]
     public string Name { get; set; }
+    public virtual ICollection<Blank>? Blanks { get; set; }
 }
