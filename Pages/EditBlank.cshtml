@@ -24,7 +24,7 @@
   </head>
   <body>
   <div class="wrapper">
-      <form method="POST" asp-page-handler="Edit" asp-route-id="@Model.ProfileId" asp-route-blankId="@Model.blankId"> 
+      <form method="POST" > 
         <h2>Изменить анкету</h2>
         <textarea name="about" placeholder="Обо мне" required>@blank?.Description</textarea>
         <select id="genderId" name="genderId" required >
@@ -85,11 +85,10 @@
             }
           </select>
         </div>
-        <input type="submit" value="Изменить" />
+        <input type="submit" value="Изменить" asp-page-handler="Edit" asp-route-id="@Model.ProfileId" asp-route-blankId="@Model.blankId"/>
+        <input type="submit" value="Фотки" asp-page-handler="EditPhotos" asp-route-blankId="@blank?.Id"/>
+         <input type="submit" value="К профилю" asp-page="Profile" asp-route-profileId="@Model.ProfileId" />
       </form>
-      <form asp-page-handler="EditPhotos" asp-route-blankId="@blank?.Id">
-                <input type="submit" value="Фотки" />
-      </form>
-    </div>
+  </div>
   </body>
 </html>

@@ -47,9 +47,17 @@ public class CreateBlank : PageModel
             Facts = facts,
             Interests = interests,
         };
+        
         var entry = ApplicationContext.Blanks.Add(blank);
         ApplicationContext.SaveChanges();
         var blankId = entry.Entity.Id;
+        
+        if (profile?.ChosenBlankId == null)
+        {
+            profile.ChosenBlankId = blankId;
+        }
+        ApplicationContext.Update(profile);
+        ApplicationContext.SaveChanges();
         Debug.WriteLine(string.Join(' ',interests));
         Debug.WriteLine(id);
         Debug.WriteLine("BlankId = " +blankId);

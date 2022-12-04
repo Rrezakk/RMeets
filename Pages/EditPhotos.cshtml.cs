@@ -46,14 +46,13 @@ public class AddPhotos : PageModel
         Debug.WriteLine($"Saving path: {paths}");
         using (var fileStream = new FileStream(paths, FileMode.Create))
             uploadedFile?.CopyTo(fileStream);
-        var level = ApplicationContext.AccessibilityLevels.FirstOrDefault(x =>
-            x.Level == AccessibilityLevels.Private);
-        Debug.WriteLine($"Accessibility set to: {level.Level}");
+        var level = AccessibilityLevels.Private;
+        Debug.WriteLine($"Accessibility set to: {level}");
         var ph = new BlankPhoto()
             { AccessibilityLevel = level, Url = path,BlankId = blankId};
         ApplicationContext.BlankPhotos.Add(ph);
         ApplicationContext.SaveChanges();
-        Debug.WriteLine($"Adding db record: {ph.Id} {ph.AccessibilityLevel.Level} {ph.Url}");
+        Debug.WriteLine($"Adding db record: {ph.Id} {level} {ph.Url}");
         return RedirectToPage("EditPhotos",new
         {
             blankId = blankId

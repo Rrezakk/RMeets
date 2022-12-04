@@ -40,7 +40,7 @@
         <select name="city">
           <option value="@profile?.City.Id" disabled selected>@profile?.City.Name</option>
           @{
-            var cities = Model.ApplicationContext.Cities.AsQueryable().Select(x => x);
+            var cities = Model.ApplicationContext.CitySet.AsQueryable().Select(x => x);
             foreach (var city in cities)
             {
               <option value=@city.Id>@city.Name</option>
@@ -56,7 +56,7 @@
         <form asp-page="Data" asp-route-profileId="@profile.Id">
           <button type="submit">Данные по анкетам</button>
         </form>
-        <form asp-page="Profile" asp-route-profileId="@profile.Id" asp-route-meeting="true">
+        <form asp-page="ViewBlank" asp-route-profileId="@profile.Id" asp-route-meeting="true">
           <button type="submit">Знакомства</button>
         </form>
       </div>

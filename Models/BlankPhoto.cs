@@ -15,5 +15,5 @@ public class BlankPhoto
     [Required]
     public virtual Blank Blank { get; set; }
     [Required]
-    public virtual AccessibilityLevel AccessibilityLevel { get; set; }
+    public virtual AccessibilityLevels AccessibilityLevel { get; set; }
 }

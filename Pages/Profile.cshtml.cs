@@ -33,7 +33,7 @@ public class Profile : PageModel
     {
         Debug.WriteLine($"Profile id: {ProfileId}");
         var gen = ApplicationContext.Genders.FirstOrDefault(g => g.Id == gender);
-        var cit = ApplicationContext.Cities.FirstOrDefault(c => c.Id == city);
+        var cit = ApplicationContext.CitySet.FirstOrDefault(c => c.Id == city);
         var profile = ApplicationContext.Profiles.FirstOrDefault(x => x.Id == ProfileId);
         Debug.WriteLine($"Name: {name} Age: {age} Gender: {gender} City: {city}");
         if (profile == null) return Content("profile null");

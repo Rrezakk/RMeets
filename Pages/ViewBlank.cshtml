@@ -1,22 +1,79 @@
 ﻿@page
-@using System.Diagnostics
+@using RMeets.Enums
+@using RMeets.Models
+@using RMeets.Contexts
 @model RMeets.Pages.ViewBlank
 @{
     Layout = null;
 }
 @{
-    Debug.WriteLine($"View for: {Model.blankId}");
-    var blank = Model.ApplicationContext.Blanks.FirstOrDefault(x => x.Id == Model.blankId);
-    Debug.WriteLine($"Blank: {blank}");
-    var viewProfileId = blank?.ProfileId;
-    var profile = Model.ApplicationContext.Profiles.FirstOrDefault(p => p.Id == viewProfileId);
-    Debug.WriteLine($"Profile: {viewProfileId}");
+    BlankViewMode mode;
+    var viewerProfile = Model.ViewerProfile;
+    
+    var viewerProfileId = viewerProfile?.Id;
+
+    Blank blank =new Blank();
+    int blankProfileId = -1;
+    Models.Profile blankProfile = new Models.Profile();
+
+    if (Model.meeting)
+    {
+        var nextBlankId = MeetingArranger.GetNextBlankId((int)viewerProfile?.ChosenBlankId,Model.ApplicationContext);
+        blank = Model.ApplicationContext.Blanks.FirstOrDefault(x => x.Id == nextBlankId);
+        blankProfileId = blank.ProfileId;
+        blankProfile = blank.Profile;
+    }
+    else
+    {
+        blank = Model.ApplicationContext.Blanks.FirstOrDefault(x => x.Id == Model.blankId);
+        blankProfileId = blank.ProfileId;
+        blankProfile = Model.ApplicationContext.Profiles.FirstOrDefault(p => p.Id == blankProfileId);
+    }
+    
+    bool showButtons =false;
+    bool additionalButton =false;
+
+    if (viewerProfileId == blankProfileId && viewerProfile?.Id!=null)
+    {
+        mode = BlankViewMode.Self;
+    }
+    else
+    {
+        mode = BlankViewMode.Voting;
+    }
+    
+    switch (mode)
+    {
+        case BlankViewMode.Self:
+            additionalButton = true;
+            showButtons = false;
+            break;
+        case BlankViewMode.Voting:
+            showButtons = true;
+            additionalButton = true;
+            break;
+    }
+    
     var match = false;
-    var additionalButton = true;
-    var login = Model.HttpContextAccessor.HttpContext?.Session.GetString("name");
-    var profile2 = Model.ApplicationContext.Users.FirstOrDefault(u => u.Login == login)?.Profile;
-    var profileId = profile2?.Id;
-    var showButtons = viewProfileId == profileId && viewProfileId != null;
+    
+    var reaction = Model.ApplicationContext.Reactions.FirstOrDefault(x=>(x.From.Id == blankProfileId &&  x.To.Id == viewerProfileId));
+    var reaction2 = Model.ApplicationContext.Reactions.FirstOrDefault(x => (x.From.Id == viewerProfileId && x.To.Id == blankProfileId));
+    if (reaction!=null)//была какая=то реакция в сторону смотрящего
+    {
+        if (reaction.ReactionType1 == reaction.ReactionType2)
+        {
+            match = true;
+        }
+    }
+    else if (reaction2!=null)//была какая=то реакция со стороны смотрящего
+    {
+        if (reaction2.ReactionType1 == reaction2.ReactionType2)
+        {
+            match = true;
+        }
+    }
+    
+        
 }
 <!DOCTYPE html>
 @if (blank != null)
@@ -62,22 +119,26 @@
                 <div class="actions">
                     @if (showButtons)
                     {
-                        <button>
-                            <img class="action" src="assets/like.svg" alt=""/>
-                        </button>
+                        <form method="post" asp-page="ViewBlank" asp-page-handler="Like" asp-route-fromId="@viewerProfile?.ChosenBlankId" asp-route-forId="@blank.Id">
+                            <button>
+                                <img class="action" src="assets/like.svg" alt=""/>
+                            </button>
+                        </form>
                     }
                     @if (additionalButton)
                     {
                         <form method="get">
-                            <input type="submit" asp-page="Profile" asp-route-profileId="@profileId" value="В профиль">
+                            <input type="submit" asp-page="Profile" asp-route-profileId="@viewerProfileId" value="В профиль">
                         </form>
                     }
 
-                    @if (showButtons)
+                    @if (showButtons )
                     {
-                        <button>
-                            <img class="action" src="assets/dislike.svg" alt=""/>
-                        </button>
+                        <form method="post" asp-page="ViewBlank" asp-page-handler="Dislike" asp-route-fromId="@viewerProfile?.ChosenBlankId" asp-route-forId="@blank.Id">
+                            <button >
+                                <img class="action" src="assets/dislike.svg" alt=""/>
+                            </button>
+                        </form>
                     }
                 </div>
 
@@ -85,15 +146,15 @@
                 {
                     <div class="match">
                         <h2>Мэтч</h2>
-                        <a href="https://sosiska.com">https://sosiska.com</a>
+                        <a href="@blankProfile?.SocialMediaLink">@blankProfile?.SocialMediaLink</a>
                     </div>
                 }
             </div>
             <div class="about">
-                <h2>@profile.Name</h2>
-                <h4>@profile.Age годиков, @blank.CurrentGender.Name</h4>
-                <p>@profile.City.Name</p>
-                <p>@blank.Description</p>
+                <h2>@blankProfile?.Name</h2>
+                <h4>@blankProfile?.Age годиков, @blank?.CurrentGender?.Name</h4>
+                <p>@blankProfile?.City?.Name</p>
+                <p>@blank?.Description</p>
                 <div>
                     <h4>Цель знакомства</h4>
                     <ul>

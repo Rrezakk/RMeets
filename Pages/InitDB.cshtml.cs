@@ -38,13 +38,7 @@ public class InitDB : PageModel
             new Role(){Name = "moder",Description = "role"},
             new Role(){Name = "admin",Description = "role"},
         });
-        Context.AccessibilityLevels.AddRange(new List<AccessibilityLevel>()
-        {
-            new AccessibilityLevel(){Level = AccessibilityLevels.Private,Value = "private"},
-            new AccessibilityLevel(){Level = AccessibilityLevels.Public,Value = "public"},
-            new AccessibilityLevel(){Level = AccessibilityLevels.Match,Value = "match"},
-        });
-        Context.Cities.AddRange(new List<City>()
+        Context.CitySet.AddRange(new List<City>()
         {
             new City(){Name = "Ростов-на-Дону"},
             new City(){Name = "Санкт-Петербург"},

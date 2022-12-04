@@ -12,7 +12,7 @@ public class User
     [Required]
     [MaxLength(100)]
     public string PasswordHash { get; set; }
-    public virtual Profile Profile { get; set; }
+    public virtual Profile? Profile { get; set; }
     public User()
     {
         

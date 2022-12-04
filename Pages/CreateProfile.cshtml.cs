@@ -23,7 +23,7 @@ public class CreateProfile : PageModel
         var sU = _httpContextAccessor.HttpContext?.Session.GetString("user");
         var user = ApplicationContext.Users.FirstOrDefault(u => u.Login == sU);
         var gen = ApplicationContext.Genders.FirstOrDefault(g => g.Id == gender);
-        var cit = ApplicationContext.Cities.FirstOrDefault(c => c.Id == city);
+        var cit = ApplicationContext.CitySet.FirstOrDefault(c => c.Id == city);
         var role = ApplicationContext.Roles.FirstOrDefault(r => r.Name == "user");
         var profile = new Models.Profile()
         {

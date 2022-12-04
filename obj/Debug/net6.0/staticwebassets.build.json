@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SRBXcjtUCsFnhXIkvUHNVi4y/h+Y1mN0OTL0Seb14fQ=",
+  "Hash": "iBTpHtYnUcLSiNAkNPHrNPZxlYpQv5KwsmJPZbII/G0=",
   "Source": "RMeets",
   "BasePath": "_content/RMeets",
   "Mode": "Default",
@@ -1275,6 +1275,23 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery\\LICENSE.txt"
     },
     {
+      "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\0_bbcf1d06-7f7f-4b0b-9fc2-5dd67834cd6d.jpg",
+      "SourceId": "RMeets",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\",
+      "BasePath": "_content/RMeets",
+      "RelativePath": "UploadedPhotos/0_bbcf1d06-7f7f-4b0b-9fc2-5dd67834cd6d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UploadedPhotos\\0_bbcf1d06-7f7f-4b0b-9fc2-5dd67834cd6d.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\0_heart (1).png",
       "SourceId": "RMeets",
       "SourceType": "Discovered",
@@ -1307,6 +1324,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\UploadedPhotos\\0_IMG_8656.JPG"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\1_IMG_8645.JPG",
+      "SourceId": "RMeets",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\",
+      "BasePath": "_content/RMeets",
+      "RelativePath": "UploadedPhotos/1_IMG_8645.JPG",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UploadedPhotos\\1_IMG_8645.JPG"
     },
     {
       "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\1_IMG_8656.JPG",
