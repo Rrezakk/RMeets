@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tYTrYqJCeocIUf8P0D6NXzFioQQLR5cqswSNADCzvcw=",
+  "Hash": "SRBXcjtUCsFnhXIkvUHNVi4y/h+Y1mN0OTL0Seb14fQ=",
   "Source": "RMeets",
   "BasePath": "_content/RMeets",
   "Mode": "Default",
@@ -1292,12 +1292,12 @@
       "OriginalItemSpec": "wwwroot\\UploadedPhotos\\0_heart (1).png"
     },
     {
-      "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\0_heart.png",
+      "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\0_IMG_8656.JPG",
       "SourceId": "RMeets",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\",
       "BasePath": "_content/RMeets",
-      "RelativePath": "UploadedPhotos/0_heart.png",
+      "RelativePath": "UploadedPhotos/0_IMG_8656.JPG",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1306,7 +1306,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\UploadedPhotos\\0_heart.png"
+      "OriginalItemSpec": "wwwroot\\UploadedPhotos\\0_IMG_8656.JPG"
     },
     {
       "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\1_IMG_8656.JPG",
@@ -1375,6 +1375,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\UploadedPhotos\\4_heart (1).png"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\5_bbcf1d06-7f7f-4b0b-9fc2-5dd67834cd6d.jpg",
+      "SourceId": "RMeets",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\",
+      "BasePath": "_content/RMeets",
+      "RelativePath": "UploadedPhotos/5_bbcf1d06-7f7f-4b0b-9fc2-5dd67834cd6d.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UploadedPhotos\\5_bbcf1d06-7f7f-4b0b-9fc2-5dd67834cd6d.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\6_RKLOgOUeLfA.jpg",
+      "SourceId": "RMeets",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\",
+      "BasePath": "_content/RMeets",
+      "RelativePath": "UploadedPhotos/6_RKLOgOUeLfA.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UploadedPhotos\\6_RKLOgOUeLfA.jpg"
     }
   ]
 }

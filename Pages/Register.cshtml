@@ -3,6 +3,10 @@
 
 @{
     Layout = null;
+  
+  var login = Model._httpContextAccessor.HttpContext?.Session.GetString("user");
+  var profile = Model.ApplicationContext.Users.FirstOrDefault(u => u.Login == login)?.Profile;
+  var allowRegistration = string.IsNullOrEmpty(login);
 }
 
 <!DOCTYPE html>
@@ -18,16 +22,26 @@
     <link rel="stylesheet" href="~/css/largeForm.css" />
     <title>Register</title>
   </head>
-  <body>
-    <div class="wrapper">
-      <form method="POST">
-        <h2>Регистрация</h2>
-        <input name="login" placeholder="Логин" required />
-        <input name="password" placeholder="Пароль" required />
-        <input name="repeatPassword" placeholder="Повторите пароль" />
-        <input type="submit" asp-page-handler="PerformRegistration" value="Создать аккаунт" />
-        <a asp-page="Login">авторизоваться</a>
-      </form>
-    </div>
-  </body>
+<body>
+@if (allowRegistration)
+{
+  <div class="wrapper">
+    <form method="POST">
+      <h2>Регистрация</h2>
+      <input name="login" placeholder="Логин" required/>
+      <input name="password" placeholder="Пароль" required/>
+      <input name="repeatPassword" placeholder="Повторите пароль"/>
+      <input type="submit" asp-page-handler="PerformRegistration" value="Создать аккаунт"/>
+      <a asp-page="Login">авторизоваться</a>
+    </form>
+  </div>
+}
+else
+{
+  <form asp-page="Profile" asp-route-profileId="@profile?.Id">
+    <h2>Вы уже авторизованы</h2>
+    <input type="submit" value="В профиль"/>
+  </form>
+}
+</body>
 </html>

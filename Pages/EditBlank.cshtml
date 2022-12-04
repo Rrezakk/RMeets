@@ -1,0 +1,95 @@
+﻿@page "{handler?}"
+@using System.Diagnostics
+@model RMeets.Pages.EditBlank
+
+@{
+    Layout = null;
+  var blank = Model.ApplicationContext.Blanks.FirstOrDefault(b => b.Id == Model.blankId);
+  Debug.WriteLine($"BlankId: {Model.blankId} blank: {blank}");
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="~/css/global.css" />
+    <link rel="stylesheet" href="~/css/largeForm.css" />
+    <link rel="stylesheet" href="~/css/createBlank.css" />
+    <title>Edit blank</title>
+  </head>
+  <body>
+  <div class="wrapper">
+      <form method="POST" asp-page-handler="Edit" asp-route-id="@Model.ProfileId" asp-route-blankId="@Model.blankId"> 
+        <h2>Изменить анкету</h2>
+        <textarea name="about" placeholder="Обо мне" required>@blank?.Description</textarea>
+        <select id="genderId" name="genderId" required >
+          <option value="@blank?.CurrentGender?.Id" selected>@blank?.CurrentGender?.Name</option>
+          @{
+            var genders = Model.ApplicationContext.Genders.Select(x => x);
+            foreach (var gender in genders.Where(g=>g.Id!=blank.CurrentGender.Id))
+            {
+              <option value=@gender.Id>@gender.Name</option>
+            }
+          }
+        </select>
+        <select id="targetId" name="targetId" required>
+          <option value="@blank?.Target?.Id" selected>@blank?.Target?.Name</option>
+          @{
+            var targets = Model.ApplicationContext.Targets.Select(x => x);
+            foreach (var target in targets.Where(g=>g.Id!=blank.Target.Id))
+            {
+              <option value=@target.Id>@target.Name</option>
+            }
+          }
+        </select>
+        <div>
+          <h4>Интересы</h4>
+          <select name="interestIds" id="interestIds" required multiple>
+            @{
+              var sel = blank.Interests.ToList();
+              foreach (var interest in Model.ApplicationContext.Interests.Select(x => x))
+              {
+                if (sel.Any(x=>x.Id==interest.Id))
+                {
+                  <option value="@interest.Id" selected>@interest.Name</option>
+                }
+                else
+                {
+                  <option value="@interest.Id">@interest.Name</option>
+                }
+              }
+            }
+          </select>
+        </div>
+        <div>
+          <h4>Интересные факты</h4>
+          <select for="factIds" name="factIds" id="factIds" required multiple>
+            @{
+              var self = blank.Interests.ToList();
+              foreach (var fact in Model.ApplicationContext.Facts.Select(x => x))
+              {
+                if (self.Any(x => x.Id == fact.Id))
+                {
+                  <option value="@fact.Id" selected>@fact.Name</option>
+                }
+                else
+                {
+                  <option value="@fact.Id">@fact.Name</option>
+                }
+              }
+            }
+          </select>
+        </div>
+        <input type="submit" value="Изменить" />
+      </form>
+      <form asp-page-handler="EditPhotos" asp-route-blankId="@blank?.Id">
+                <input type="submit" value="Фотки" />
+      </form>
+    </div>
+  </body>
+</html>

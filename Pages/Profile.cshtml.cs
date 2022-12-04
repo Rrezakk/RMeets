@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 using RMeets.Contexts;
+using System.Diagnostics;
 
 namespace RMeets.Pages;
 
@@ -13,7 +15,8 @@ public class Profile : PageModel
         ApplicationContext = applicationContext;
     }
     public ApplicationContext ApplicationContext { get; set; }
-    public int ProfileId { get; set; }
+    [BindProperty]
+    public int profileId { get; set; }
     public IActionResult OnGet()
     {
         var login = _httpContextAccessor.HttpContext?.Session.GetString("user");
@@ -23,7 +26,29 @@ public class Profile : PageModel
         {
             return RedirectToPage("CreateProfile");
         }
-        ProfileId = p.Id;
+        profileId = p.Id;
         return Page();
+    }
+    public IActionResult OnPostEditProfile(string name,int age,int city,int gender,string contact,int ProfileId)
+    {
+        Debug.WriteLine($"Profile id: {ProfileId}");
+        var gen = ApplicationContext.Genders.FirstOrDefault(g => g.Id == gender);
+        var cit = ApplicationContext.Cities.FirstOrDefault(c => c.Id == city);
+        var profile = ApplicationContext.Profiles.FirstOrDefault(x => x.Id == ProfileId);
+        Debug.WriteLine($"Name: {name} Age: {age} Gender: {gender} City: {city}");
+        if (profile == null) return Content("profile null");
+        profile.Name = name;
+        profile.Age = age;
+        profile.SocialMediaLink = contact;
+        if (cit != null) profile.City = cit;
+        if (gen != null) profile.Gender = gen;
+        ApplicationContext.Profiles.Attach(profile);
+        ApplicationContext.Profiles.Entry(profile).State = EntityState.Modified;
+        ApplicationContext.SaveChanges();
+        Debug.WriteLine($"Name: {name} Age: {age} Gender: {gender} City: {city}");
+        return RedirectToPage("Profile",new
+        {
+            profileId = profile.Id
+        });
     }
 }

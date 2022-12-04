@@ -7,7 +7,7 @@ namespace RMeets.Pages;
 
 public class Register : PageModel
 {
-    private readonly IHttpContextAccessor _httpContextAccessor;
+    public readonly IHttpContextAccessor _httpContextAccessor;
     public Register(IHttpContextAccessor httpContextAccessor, ApplicationContext applicationContext)
     {
         _httpContextAccessor = httpContextAccessor;
@@ -16,7 +16,7 @@ public class Register : PageModel
     public ApplicationContext ApplicationContext { get; set; }
     public void OnGet()
     {
-
+        
     }
     public IActionResult OnPostPerformRegistration(string login,
         string password,string repeatPassword)

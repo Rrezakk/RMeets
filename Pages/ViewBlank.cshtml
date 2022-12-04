@@ -12,9 +12,10 @@
     var profile = Model.ApplicationContext.Profiles.FirstOrDefault(p => p.Id == viewProfileId);
     Debug.WriteLine($"Profile: {viewProfileId}");
     var match = false;
-    var additionalButton = false;
+    var additionalButton = true;
     var login = Model.HttpContextAccessor.HttpContext?.Session.GetString("name");
-    var profileId = Model.ApplicationContext.Users.FirstOrDefault(u => u.Login == login)?.Profile.Id;
+    var profile2 = Model.ApplicationContext.Users.FirstOrDefault(u => u.Login == login)?.Profile;
+    var profileId = profile2?.Id;
     var showButtons = viewProfileId == profileId && viewProfileId != null;
 }
 <!DOCTYPE html>
@@ -67,7 +68,9 @@
                     }
                     @if (additionalButton)
                     {
-                        <button>TEXT</button>
+                        <form method="get">
+                            <input type="submit" asp-page="Profile" asp-route-profileId="@profileId" value="В профиль">
+                        </form>
                     }
 
                     @if (showButtons)
@@ -94,7 +97,7 @@
                 <div>
                     <h4>Цель знакомства</h4>
                     <ul>
-                        <li>@blank.Target.Name</li>
+                        <li>@blank?.Target?.Name</li>
                     </ul>
                 </div>
                 <div>

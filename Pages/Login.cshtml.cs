@@ -15,9 +15,15 @@ public class Login : PageModel
     public ApplicationContext ApplicationContext { get; set; }
     public IActionResult OnGet()
     {
-        if (!string.IsNullOrEmpty(_httpContextAccessor.HttpContext?.Session.GetString("user")))
+        var login = _httpContextAccessor.HttpContext?.Session.GetString("user");
+        var u = ApplicationContext.Users.FirstOrDefault(x => x.Login == login);
+        var profile = u?.Profile;
+        if (profile!=null)
         {
-            return RedirectToPage("Profile");
+            return RedirectToPage("Profile",new
+            {
+                profileId = profile?.Id
+            });
         }
         return Page();
     }
@@ -33,6 +39,9 @@ public class Login : PageModel
             return Content("Неверный пароль");
         }
         _httpContextAccessor.HttpContext?.Session.SetString("user",u.Login);
-        return RedirectToPage("Profile");
+        return RedirectToPage("Profile",new
+        {
+            profileId = ApplicationContext.Profiles.FirstOrDefault(p=>p.UserRef==u.Id)?.Id
+        });
     }
 }

@@ -7,9 +7,6 @@ public class Reaction
 {
     [Key]
     public int Id { get; set; }
-    [Required]
-    [MaxLength(100)]
-    public string Value { get; set; }
     public virtual Blank From { get; set; }
     public virtual Blank To { get; set; }
     public DateTime Timestamp1 { get; set; }
