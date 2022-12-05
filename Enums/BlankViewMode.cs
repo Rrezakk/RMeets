@@ -4,5 +4,9 @@ public enum BlankViewMode
 {
     Self,
     Voting,
-    Preview
+    Match,
+    EndOfBlanks,
+    JustView,
+    Moderation,
+    Idle
 }

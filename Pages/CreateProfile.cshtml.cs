@@ -24,7 +24,6 @@ public class CreateProfile : PageModel
         var user = ApplicationContext.Users.FirstOrDefault(u => u.Login == sU);
         var gen = ApplicationContext.Genders.FirstOrDefault(g => g.Id == gender);
         var cit = ApplicationContext.CitySet.FirstOrDefault(c => c.Id == city);
-        var role = ApplicationContext.Roles.FirstOrDefault(r => r.Name == "user");
         var profile = new Models.Profile()
         {
             UserRef = user.Id,
@@ -33,7 +32,6 @@ public class CreateProfile : PageModel
             Age = age,
             City = cit,
             RegistrationTimestamp = DateTime.Now,
-            Role = role,
             SocialMediaLink = contact
         };
 

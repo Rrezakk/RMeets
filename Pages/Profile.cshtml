@@ -50,13 +50,13 @@
         <input type="submit" value="Изменить"  />
       </form>
       <div>
-        <form asp-page="Blanks" asp-route-profileId="@profile.Id">
+        <form asp-page="Blanks" asp-route-ProfileId="@profile.Id" asp-route-profileId="@profile.Id">
           <button type="submit">Мои анкеты</button>
         </form>
-        <form asp-page="Data" asp-route-profileId="@profile.Id">
+        <form asp-page="Overview" asp-route-profileId="@profile.Id">
           <button type="submit">Данные по анкетам</button>
         </form>
-        <form asp-page="ViewBlank" asp-route-profileId="@profile.Id" asp-route-meeting="true">
+        <form asp-page="ViewBlank" asp-route-profileId="@profile.Id" asp-route-meeting="true" asp-route-previousBlankId="-1">
           <button type="submit">Знакомства</button>
         </form>
       </div>

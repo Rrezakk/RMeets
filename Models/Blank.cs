@@ -27,7 +27,7 @@ public class Blank
     public virtual ICollection<Interest> Interests { get; set; }
     [Required]
     public virtual ICollection<Fact> Facts { get; set; }
-    public bool Moderated { get; set; } = false;
+    public bool? BlockedByModerator { get; set; } = null;
     public Blank()
     {
     }

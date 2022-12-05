@@ -26,17 +26,13 @@ public class InitDB : PageModel
             new Interest(){Name = "ухаживание"},
             new Interest(){Name = "цветочки"},
         });
+        Context.Users.Add(new User(){Login = "moderator",PasswordHash = "moderator"});
+        
         Context.Targets.AddRange(new List<Target>()
         {
             new Target(){Name = "Найти папика"},
             new Target(){Name = "Купить слона"},
             new Target(){Name = "Рабство"},
-        });
-        Context.Roles.AddRange(new List<Role>()
-        {
-            new Role(){Name = "user",Description = "role"},
-            new Role(){Name = "moder",Description = "role"},
-            new Role(){Name = "admin",Description = "role"},
         });
         Context.CitySet.AddRange(new List<City>()
         {

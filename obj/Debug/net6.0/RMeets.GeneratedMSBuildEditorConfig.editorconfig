@@ -55,8 +55,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Meeting.cshtml]
-build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWVldGluZy5jc2h0bWw=
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Moderator.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kZXJhdG9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Overview.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3ZlcnZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Profile.cshtml]

@@ -32,7 +32,7 @@ public class Register : PageModel
         {
             return Content("user already exists");
         }
-        var user = new User(login,password);
+        var user = new User(){Login = login,PasswordHash = repeatPassword};
         ApplicationContext.Users.Add(user);
         ApplicationContext.SaveChanges();
         _httpContextAccessor.HttpContext?.Session.SetString("user",user.Login);

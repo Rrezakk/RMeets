@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RMeets.Enums;
+using System.ComponentModel.DataAnnotations;
 
 namespace RMeets.Models;
 
@@ -12,14 +13,7 @@ public class User
     [Required]
     [MaxLength(100)]
     public string PasswordHash { get; set; }
+
+    [Required] public virtual UserRoles? Role { get; set; } = UserRoles.User;
     public virtual Profile? Profile { get; set; }
-    public User()
-    {
-        
-    }
-    public User(string login, string passwordHash)
-    {
-        Login = login;
-        PasswordHash = passwordHash;
-    }
 }

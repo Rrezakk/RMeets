@@ -1,0 +1,181 @@
+﻿@page
+@using RMeets.Enums
+@model RMeets.Pages.Overview
+
+@{
+    Layout = null;
+    //Model.ApplicationContext.Reactions.Where(r=>r.From == )
+    var myBlankId = Model.ViewerProfile.ChosenBlankId;
+    var reactionsPendingFrom = Model.ApplicationContext.Reactions.Where(r => r.From.Id == myBlankId&&r.To!=null && (r.ReactionType2 ==null)).ToList();
+    var reactionsPendingFromAns = Model.ApplicationContext.Reactions.Where(r=> r.To!=null
+                                                                               && r.To.Id == myBlankId
+                                                                               && r.ReactionType2 !=null//ответила моя анкета
+                                                                               && !(r.ReactionType1==r.ReactionType2 && r.ReactionType1==ReactionTypes.Like)).ToList();//не мэтч
+    
+    var reactionsPendingTo = Model.ApplicationContext.Reactions.Where(r => r.To!=null && r.To.Id == myBlankId
+                                                                           && r.ReactionType1 != r.ReactionType2
+                                                                           && r.ReactionType2 ==null
+                                                                           && r.ReactionType1 != ReactionTypes.Dislike).ToList();
+    var reactionsMatchFromMe = Model.ApplicationContext.Reactions.Where(r => ((r.From.Id == myBlankId))
+                                                                       && r.ReactionType1 == r.ReactionType2
+                                                                       && r.ReactionType1 == ReactionTypes.Like).ToList();
+    var reactionsMatchToMe = Model.ApplicationContext.Reactions.Where(r => (((r.To != null&& r.To.Id == myBlankId)))
+                                                                             && r.ReactionType1 == r.ReactionType2
+                                                                             && r.ReactionType1 == ReactionTypes.Like).ToList();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/global.css"/>
+    <link rel="stylesheet" href="/css/largeForm.css"/>
+    <link rel="stylesheet" href="/css/tables.css"/>
+    <link rel="stylesheet" href="/css/blanks.css"/>
+    <title>Blanks</title>
+    <style>
+      .content {
+        text-align: center;
+      }
+      .table {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="content">
+        <div class="table">
+            <h2>Я отреагировал</h2>
+            <table>
+                <thead>
+                <tr>
+                    <td>Имя</td>
+                    <td>Возраст</td>
+                    <td>Цель</td>
+                    <td>Тип</td>
+                    <td>Действия</td>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- foreach -->
+                @{
+                    foreach (var reaction in reactionsPendingFrom)
+                    {
+                        var blank = reaction.To;
+                        <tr>
+                            <td>@blank?.Profile?.Name</td>
+                            <td>@blank?.Profile?.Age</td>
+                            <td>@blank?.Target?.Name</td>
+                            <td>@reaction?.ReactionType1</td>
+                            <td>
+                                <a asp-page="ViewBlank" asp-route-blankId="@blank?.Id" asp-route-meeting="false" asp-route-previousBlankId="-1">
+                                    <button >Посмотреть</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    foreach (var reaction in reactionsPendingFromAns)
+                    {
+                        var blank = reaction.From;
+                        <tr>
+                            <td>@blank?.Profile?.Name</td>
+                            <td>@blank?.Profile?.Age</td>
+                            <td>@blank?.Target?.Name</td>
+                            <td>@reaction?.ReactionType2</td>
+                            <td>
+                                <a asp-page="ViewBlank" asp-route-blankId="@blank?.Id" asp-route-meeting="false" asp-route-previousBlankId="-1">
+                                    <button >Посмотреть</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table">
+            <h2>Меня лайкнули</h2>
+            <table>
+                <thead>
+                <tr>
+                    <td>Имя</td>
+                    <td>Возраст</td>
+                    <td>Действия</td>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- foreach -->
+                @{
+                    foreach (var reaction in reactionsPendingTo)
+                    {
+                        var blank = reaction.From;
+                        <tr>
+                            <td>@blank.Profile.Name</td>
+                            <td>@blank.Profile.Age</td>
+                            <td>
+                                <a asp-page="ViewBlank" asp-route-blankId="@blank.Id" asp-route-meeting="false" asp-route-previousBlankId="-1">
+                                    <button >Посмотреть</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+
+        <div class="table">
+            <h2>Мэтчи</h2>
+            <table>
+                <thead>
+                <tr>
+                    <td>Имя</td>
+                    <td>Возраст</td>
+                    <td>Действия</td>
+                </tr>
+                </thead>
+                <tbody>
+                @{
+                    foreach (var reaction in reactionsMatchFromMe)
+                    {
+                        var blank = reaction.To;
+                        <tr>
+                            <td>@blank.Profile.Name</td>
+                            <td>@blank.Profile.Age</td>
+                            <td>
+                                <a asp-page="ViewBlank" asp-route-blankId="@blank.Id" asp-route-meeting="false" asp-route-previousBlankId="-1">
+                                    <button >Посмотреть</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                    foreach (var reaction in reactionsMatchToMe)
+                    {
+                        var blank = reaction.From;
+                        <tr>
+                            <td>@blank.Profile.Name</td>
+                            <td>@blank.Profile.Age</td>
+                            <td>
+                                <a asp-page="ViewBlank" asp-route-blankId="@blank.Id" asp-route-meeting="false" asp-route-previousBlankId="-1">
+                                    <button >Посмотреть</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

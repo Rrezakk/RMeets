@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RMeets.Contexts;
+using RMeets.Enums;
+using RMeets.Models;
 
 namespace RMeets.Pages;
 
@@ -30,6 +32,7 @@ public class Login : PageModel
     public IActionResult OnPostPerformLogin(string login,string password)
     {
         var u = ApplicationContext.Users.FirstOrDefault(x => x.Login == login);
+        //return Content($"User: {u.Id} {u.Login} {u.PasswordHash}");
         if (u == null)
         {
             return Content("Такого пользователя не существует");
@@ -39,9 +42,21 @@ public class Login : PageModel
             return Content("Неверный пароль");
         }
         _httpContextAccessor.HttpContext?.Session.SetString("user",u.Login);
-        return RedirectToPage("Profile",new
+        
+        if (u?.Role == null)
         {
-            profileId = ApplicationContext.Profiles.FirstOrDefault(p=>p.UserRef==u.Id)?.Id
-        });
+            ApplicationContext.Attach<User>(u);
+            u.Role = UserRoles.User;
+            ApplicationContext.Update(u);
+            ApplicationContext.SaveChanges();
+        }
+        var role = u?.Role;
+        var profileId = ApplicationContext.Profiles.FirstOrDefault(p => p.UserRef == u.Id)?.Id;
+        return role switch
+        {
+            UserRoles.Moderator => RedirectToPage("Moderator", new { profileId }),
+            UserRoles.User => RedirectToPage("Profile", new { profileId }),
+            _ => RedirectToPage("Profile", new { profileId })
+        };
     }
 }

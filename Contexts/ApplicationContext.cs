@@ -15,7 +15,6 @@ namespace RMeets.Contexts
         public DbSet<Interest> Interests { get; set; } = null!;
         public DbSet<Profile> Profiles { get; set; } = null!;
         public DbSet<Reaction> Reactions { get; set; } = null!;
-        public DbSet<Role> Roles { get; set; } = null!;
         public DbSet<Target> Targets { get; set; } = null!;
         public ApplicationContext(DbContextOptions<ApplicationContext> options)
             : base(options)

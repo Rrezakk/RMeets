@@ -26,6 +26,5 @@ public class Profile
     public string SocialMediaLink { get; set; }
     [Required]
     public DateTime RegistrationTimestamp { get; set; }
-    public virtual Role? Role { get; set; }//Nullable
     public virtual ICollection<Blank>? Blanks { get; set; }
 }

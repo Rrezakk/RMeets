@@ -7,7 +7,14 @@
     Layout = null;
 }
 @{
-    BlankViewMode mode;
+    bool showButtons =false;
+    bool additionalButton =false;
+    bool showMediaLinkOnMatch = false;
+    bool showBlank = true;
+    bool moderatorButtons = false;
+    var previousBlankId = Model.previousBlankId;
+    BlankViewMode mode = BlankViewMode.Idle;
+    bool success = true;
     var viewerProfile = Model.ViewerProfile;
     
     var viewerProfileId = viewerProfile?.Id;
@@ -18,29 +25,70 @@
 
     if (Model.meeting)
     {
-        var nextBlankId = MeetingArranger.GetNextBlankId((int)viewerProfile?.ChosenBlankId,Model.ApplicationContext);
-        blank = Model.ApplicationContext.Blanks.FirstOrDefault(x => x.Id == nextBlankId);
-        blankProfileId = blank.ProfileId;
-        blankProfile = blank.Profile;
+        var nxt = MeetingArranger.GetNextBlankId((int)viewerProfile?.ChosenBlankId,viewerProfile.Id,previousBlankId,Model.ApplicationContext);
+        var nextBlankId = nxt.Item1;
+        success = nxt.Item2;
+        if (success)
+        {
+            blank = Model.ApplicationContext.Blanks.FirstOrDefault(x => x.Id == nextBlankId);
+            blankProfileId = blank.ProfileId;
+            blankProfile = blank.Profile;
+            previousBlankId = nextBlankId;
+        }
     }
     else
     {
         blank = Model.ApplicationContext.Blanks.FirstOrDefault(x => x.Id == Model.blankId);
         blankProfileId = blank.ProfileId;
         blankProfile = Model.ApplicationContext.Profiles.FirstOrDefault(p => p.Id == blankProfileId);
+        mode = BlankViewMode.JustView;
+        if (Model.moderation)
+        {
+            mode = BlankViewMode.Moderation;
+            goto moderation;
+        }
     }
     
-    bool showButtons =false;
-    bool additionalButton =false;
+    
+    
 
+    if (!success)
+    {
+        mode = BlankViewMode.EndOfBlanks;
+    }
     if (viewerProfileId == blankProfileId && viewerProfile?.Id!=null)
     {
         mode = BlankViewMode.Self;
     }
     else
     {
-        mode = BlankViewMode.Voting;
+        var match = false;
+    
+        var reaction = Model.ApplicationContext.Reactions.FirstOrDefault(x=>(x.From.Id == blank.Id && x.To!=null&&  x.To.Id == viewerProfile.ChosenBlankId));
+        var reaction2 = Model.ApplicationContext.Reactions.FirstOrDefault(x => (x.From.Id == viewerProfile.ChosenBlankId  && x.To!=null && x.To.Id ==  blank.Id));
+        if (reaction!=null)//была какая=то реакция в сторону смотрящего
+        {
+            if (reaction.ReactionType1 == reaction.ReactionType2 &&reaction.ReactionType1==ReactionTypes.Like)
+            {
+                match = true;
+            }
+        }
+        else if (reaction2!=null)//была какая=то реакция со стороны смотрящего
+        {
+            if (reaction2.ReactionType1 == reaction2.ReactionType2&&reaction.ReactionType1==ReactionTypes.Like)
+            {
+                match = true;
+            }
+        }
+
+        if (match)
+            mode = BlankViewMode.Match;
+        else if(mode == BlankViewMode.Idle)
+            mode = BlankViewMode.Voting;
+
+        
     }
+    moderation:
     
     switch (mode)
     {
@@ -52,31 +100,44 @@
             showButtons = true;
             additionalButton = true;
             break;
+        case BlankViewMode.Match:
+            additionalButton = true;
+            showMediaLinkOnMatch = true;
+            break;
+        case BlankViewMode.EndOfBlanks:
+            additionalButton = false;
+            showMediaLinkOnMatch = false;
+            showBlank = false;
+            break;
+        case BlankViewMode.JustView:
+            additionalButton = true;
+            showMediaLinkOnMatch = false;
+            showButtons = false;
+            break;
+        case BlankViewMode.Moderation:
+            additionalButton = false;
+            showMediaLinkOnMatch = false;
+            showBlank = true;
+            moderatorButtons = true;
+            break;
     }
-    
-    var match = false;
-    
-    var reaction = Model.ApplicationContext.Reactions.FirstOrDefault(x=>(x.From.Id == blankProfileId &&  x.To.Id == viewerProfileId));
-    var reaction2 = Model.ApplicationContext.Reactions.FirstOrDefault(x => (x.From.Id == viewerProfileId && x.To.Id == blankProfileId));
-    if (reaction!=null)//была какая=то реакция в сторону смотрящего
-    {
-        if (reaction.ReactionType1 == reaction.ReactionType2)
-        {
-            match = true;
-        }
-    }
-    else if (reaction2!=null)//была какая=то реакция со стороны смотрящего
-    {
-        if (reaction2.ReactionType1 == reaction2.ReactionType2)
-        {
-            match = true;
-        }
-    }
-    
-        
 }
 <!DOCTYPE html>
-@if (blank != null)
+@if ( blank.BlockedByModerator==true && mode is BlankViewMode.Voting or BlankViewMode.Match )
+{
+    <div>
+        <p>
+            Анкета заблокирована модератором
+        </p>
+        <form asp-page="ViewBlank" asp-route-profileId="@viewerProfile?.Id" asp-route-meeting="true" asp-route-previousBlankId="@previousBlankId">
+            <input type="submit" value="Искать дальше">
+        </form>
+        <form method="get">
+                                    <input type="submit" asp-page="Profile" asp-route-profileId="@viewerProfileId" value="В профиль">
+        </form>
+    </div>   
+}
+else if (showBlank)
 {
     
 <html lang="en">
@@ -119,7 +180,7 @@
                 <div class="actions">
                     @if (showButtons)
                     {
-                        <form method="post" asp-page="ViewBlank" asp-page-handler="Like" asp-route-fromId="@viewerProfile?.ChosenBlankId" asp-route-forId="@blank.Id">
+                        <form method="post" asp-page="ViewBlank" asp-page-handler="Like" asp-route-fromId="@viewerProfile?.ChosenBlankId" asp-route-forId="@blank.Id" asp-route-previousBlankId="@previousBlankId">
                             <button>
                                 <img class="action" src="assets/like.svg" alt=""/>
                             </button>
@@ -131,18 +192,37 @@
                             <input type="submit" asp-page="Profile" asp-route-profileId="@viewerProfileId" value="В профиль">
                         </form>
                     }
-
-                    @if (showButtons )
+                    @if (showMediaLinkOnMatch)
                     {
-                        <form method="post" asp-page="ViewBlank" asp-page-handler="Dislike" asp-route-fromId="@viewerProfile?.ChosenBlankId" asp-route-forId="@blank.Id">
+                        <form asp-page="ViewBlank" asp-route-profileId="@viewerProfile?.Id" asp-route-meeting="true" asp-route-previousBlankId="@previousBlankId">
+                            <input type="submit" value="Искать дальше">
+                        </form>
+                    }
+                    @if (moderatorButtons)
+                                        {
+                                            <form method="post" asp-page="Moderator" asp-page-handler="Moderate" asp-route-blankId="@blank.Id" asp-route-moderationResult="true">
+                                                <input type="submit" value="Разрешить анкету">
+                                            </form>
+                                            <form method="post" asp-page="Moderator" asp-page-handler="Moderate" asp-route-blankId="@blank.Id" asp-route-moderationResult="false">
+                                                <input type="submit" value="Запретить анкету">
+                                            </form>
+                                            <form method="get" asp-page="Moderator">
+                                                <input type="submit" value="Не модерировать">
+                                            </form>
+                                        }
+
+                    @if (showButtons)
+                    {
+                        <form method="post" asp-page="ViewBlank" asp-page-handler="Dislike" asp-route-fromId="@viewerProfile?.ChosenBlankId" asp-route-forId="@blank.Id" asp-route-previousBlankId="@previousBlankId">
                             <button >
                                 <img class="action" src="assets/dislike.svg" alt=""/>
                             </button>
                         </form>
                     }
+                    
                 </div>
 
-                @if (match)
+                @if (showMediaLinkOnMatch)
                 {
                     <div class="match">
                         <h2>Мэтч</h2>
@@ -151,7 +231,15 @@
                 }
             </div>
             <div class="about">
-                <h2>@blankProfile?.Name</h2>
+                @if (blank.BlockedByModerator==true)
+                {
+                    <h2>@blankProfile?.Name (Заблокирована модератором)</h2>
+                }
+                else
+                {
+                    <h2>@blankProfile?.Name</h2>
+
+                }
                 <h4>@blankProfile?.Age годиков, @blank?.CurrentGender?.Name</h4>
                 <p>@blankProfile?.City?.Name</p>
                 <p>@blank?.Description</p>
@@ -210,6 +298,9 @@
 else
 {
     <div>
-        Invalid data state
+        <p>Вы отреагировали на все доступные анкеты</p>
+        <form method="get">
+            <input type="submit" asp-page="Profile" asp-route-profileId="@viewerProfileId" value="В профиль">
+        </form>
     </div>
 }

@@ -24,4 +24,8 @@
       <Folder Include="wwwroot\UploadedPhotos" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Remove="Models\Role.cs" />
+    </ItemGroup>
+
 </Project>

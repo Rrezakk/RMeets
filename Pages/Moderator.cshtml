@@ -1,0 +1,80 @@
+﻿@page "{handler?}"
+@using RMeets.SpecialModels
+@using RMeets.Models
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model RMeets.Pages.Moderator
+
+@{
+    Layout = null;
+    var shortViews = Model.ApplicationContext.Blanks.ToList();
+    var blankShortViews = shortViews.Select(x =>
+        new ShortBlankAdministratorViewModel(x.Id, x?.Profile?.Name, x?.Target?.Name, x?.BlockedByModerator))
+        .OrderBy(x => x.Moderated).ToList();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="/css/global.css"/>
+    <link rel="stylesheet" href="/css/largeForm.css"/>
+    <link rel="stylesheet" href="/css/tables.css"/>
+    <link rel="stylesheet" href="/css/blanks.css"/>
+    <title>Blanks</title>
+    <style>
+      .content {
+        text-align: center;
+      }
+      .table {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="content">
+        <div class="table">
+            <h2>Анкеты</h2>
+            <table>
+                <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Имя</td>
+                    <td>Цель</td>
+                    <td>Проверена</td>
+                    <td>Действия</td>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- foreach -->
+                @{
+                    foreach (var blank in blankShortViews)
+                    {
+                        <tr>
+                            <td>@blank.Id</td>
+                            <td>@blank.Name</td>
+                            <td>@blank.Target</td>
+                            <td>@blank.Moderated</td>
+                            <td>
+                                <a asp-page="ViewBlank" asp-route-blankId="@blank.Id" asp-route-meeting="false" asp-route-previousBlankId="-1" asp-route-moderation="true">
+                                    <button >Модерация</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+
+

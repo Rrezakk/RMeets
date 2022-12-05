@@ -15,8 +15,25 @@ public class Blanks : PageModel
     }
     [BindProperty]
     public int ProfileId { get; set; }
-    public IActionResult OnGet()
+    public IActionResult OnGet(int profileId)
     {
+        this.ProfileId = profileId;
         return Page();
+    }
+    public IActionResult OnGetChooseMainBlank(int profileId,int blankId)
+    {
+        var profile = ApplicationContext.Profiles.FirstOrDefault(p => p.Id == profileId);
+        if (profile != null)
+        {
+            ApplicationContext.Attach<Models.Profile>(profile);
+            profile.ChosenBlankId = blankId;
+            ApplicationContext.Update(profile);
+            ApplicationContext.SaveChanges();
+        }
+
+        return RedirectToPage("Blanks", new
+        {
+            profileId
+        });
     }
 }

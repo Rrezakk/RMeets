@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Query.Internal;
 using RMeets.Contexts;
 using RMeets.Enums;
 using RMeets.Models;
+using System.Configuration;
 using System.Diagnostics;
 
 namespace RMeets.Pages;
@@ -26,18 +27,25 @@ public class ViewBlank : PageModel
     public int blankId { get; set; }
     [BindProperty]
     public bool meeting { get; set; }
-    public void OnGet(int blankId,bool meeting)
+    [BindProperty]
+    public bool moderation { get; set; }
+
+    [BindProperty] public int previousBlankId { get; set; }
+    public void OnGet(int blankId,bool meeting,int previousBlankId,bool? moderation)
     {
+        
         this.blankId = blankId;
         this.meeting = meeting;
+        this.previousBlankId = previousBlankId;
+        this.moderation = moderation == true;
     }
     private void React( int fromId, int forId,ReactionTypes type)
     {
-        var reaction = ApplicationContext.Reactions.FirstOrDefault(x => x.From.Id == forId);
-        if (reaction != null)
+        var reaction = ApplicationContext.Reactions.FirstOrDefault(x => x.From.Id == forId && x.To!=null &&x.To.Id==fromId);
+        if (reaction != null)//other blank used to react before
         {
             ApplicationContext.Attach(reaction);
-            reaction.To = ApplicationContext.Blanks.FirstOrDefault(x => x.Id == fromId) ?? throw new InvalidOperationException();
+            //reaction.To = ApplicationContext.Blanks.FirstOrDefault(x => x.Id == fromId) ?? throw new InvalidOperationException();
             reaction.Timestamp2 = DateTime.Now;
             reaction.ReactionType2 = type;
             ApplicationContext.Entry<Reaction>(reaction).State = EntityState.Modified;
@@ -45,8 +53,8 @@ public class ViewBlank : PageModel
         }
         else
         {
-            var reactedBefore = ApplicationContext.Reactions.FirstOrDefault(x => x.From.Id == fromId);
-            if (reactedBefore!=null)
+            var reactedBefore = ApplicationContext.Reactions.FirstOrDefault(x => x.From.Id == fromId && x.To!=null &&x.To.Id==forId);
+            if (reactedBefore!=null)//viewer blank used to react before
             {
                 ApplicationContext.Attach(reactedBefore);
                 reactedBefore.Timestamp1 = DateTime.Now;
@@ -55,11 +63,12 @@ public class ViewBlank : PageModel
                 ApplicationContext.Entry<Reaction>(reactedBefore).State = EntityState.Modified;
                 ApplicationContext.SaveChanges();
             }
-            else
+            else//no reaction before
             {
                 reaction = new Reaction
                 {
                     From = ApplicationContext.Blanks.FirstOrDefault(x => x.Id == fromId) ?? throw new InvalidOperationException(),
+                    To = ApplicationContext.Blanks.FirstOrDefault(x => x.Id == forId) ?? throw new InvalidOperationException(),
                     Timestamp1 = DateTime.Now,
                     ReactionType1 = type
                 };
@@ -74,7 +83,9 @@ public class ViewBlank : PageModel
         Debug.WriteLine($"{fromId} {forId}");
         return RedirectToPage("ViewBlank",new
         {
-            meeting = true
+            meeting = true,
+            blankId,
+            previousBlankId
         });
     }
     public IActionResult OnPostDislike(int fromId,int forId)
@@ -83,7 +94,9 @@ public class ViewBlank : PageModel
         Debug.WriteLine($"{fromId} {forId}");
         return RedirectToPage("ViewBlank",new
         {
-            meeting = true
+            meeting = true,
+            blankId,
+            previousBlankId
         });
     }
 }
