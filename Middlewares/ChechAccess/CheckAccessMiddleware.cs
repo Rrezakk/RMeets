@@ -17,7 +17,7 @@ public class CheckAccessMiddleware
         var token = context.Session.GetString("user");
         Debug.WriteLine($"Token: {token} Path: {context.Request.Path.ToString()}");
         var path = context.Request.Path.ToString().ToLowerInvariant();
-        var c = path.Contains("/login") || path.Contains("/register")|| path.Equals("/");
+        var c = path.Contains("/login") || path.Contains("/register")|| path.Equals("/")|| path.ToLowerInvariant().Contains("initdb");
         if (string.IsNullOrEmpty(token)&&!c)
         {
             context.Response.StatusCode = StatusCodes.Status403Forbidden;

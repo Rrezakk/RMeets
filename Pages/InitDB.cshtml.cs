@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 using RMeets.Contexts;
-using RMeets.Enums;
 using RMeets.Models;
 
 namespace RMeets.Pages;
@@ -12,8 +12,12 @@ public class InitDB : PageModel
     {
         Context = context;
     }
-    public void OnGet()
+    public IActionResult OnGet()
     {
+        if (Context.Facts.ToList().Count>0)
+        {
+            return RedirectToPage("Index");
+        }
         Context.Facts.AddRange(new List<Fact>()
         {
             new Fact(){Name = "Крутой"},
@@ -47,5 +51,6 @@ public class InitDB : PageModel
             new Gender(){Name = "другое"},
         });
         Context.SaveChanges();
+        return RedirectToPage("Index");
     }
 }
