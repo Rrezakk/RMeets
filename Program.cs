@@ -32,6 +32,7 @@ builder.Services.AddScoped<TargetRepository>();
 builder.Services.AddScoped<UserRepository>();
 builder.Services.AddScoped<AccountService>();
 builder.Services.AddScoped<BlankDataService>();
+builder.Services.AddScoped<ReactionsService>();
 
 var app = builder.Build();
 if (!app.Environment.IsDevelopment())

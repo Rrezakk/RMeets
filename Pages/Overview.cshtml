@@ -1,27 +1,15 @@
 ﻿@page
-@using RMeets.Enums
 @model RMeets.Pages.Overview
 
 @{
     Layout = null;
-    //Model.ApplicationContext.Reactions.Where(r=>r.From == )
-    var myBlankId = Model.ViewerProfile.ChosenBlankId;
-    var reactionsPendingFrom = Model.ApplicationContext.Reactions.Where(r => r.From.Id == myBlankId&&r.To!=null && (r.ReactionType2 ==null)).ToList();
-    var reactionsPendingFromAns = Model.ApplicationContext.Reactions.Where(r=> r.To!=null
-                                                                               && r.To.Id == myBlankId
-                                                                               && r.ReactionType2 !=null//ответила моя анкета
-                                                                               && !(r.ReactionType1==r.ReactionType2 && r.ReactionType1==ReactionTypes.Like)).ToList();//не мэтч
-    
-    var reactionsPendingTo = Model.ApplicationContext.Reactions.Where(r => r.To!=null && r.To.Id == myBlankId
-                                                                           && r.ReactionType1 != r.ReactionType2
-                                                                           && r.ReactionType2 ==null
-                                                                           && r.ReactionType1 != ReactionTypes.Dislike).ToList();
-    var reactionsMatchFromMe = Model.ApplicationContext.Reactions.Where(r => ((r.From.Id == myBlankId))
-                                                                       && r.ReactionType1 == r.ReactionType2
-                                                                       && r.ReactionType1 == ReactionTypes.Like).ToList();
-    var reactionsMatchToMe = Model.ApplicationContext.Reactions.Where(r => (((r.To != null&& r.To.Id == myBlankId)))
-                                                                             && r.ReactionType1 == r.ReactionType2
-                                                                             && r.ReactionType1 == ReactionTypes.Like).ToList();
+    var myBlankId = Model?.ViewerProfile?.ChosenBlankId ?? -1;
+    var reactionsPendingFrom = Model?.ReactionsService.GetReactionsPendingFrom(myBlankId);
+    var reactionsPendingFromAns = Model?.ReactionsService.GetReactionsPendingFromAns(myBlankId);
+
+    var reactionsPendingTo = Model?.ReactionsService.GetReactionsPendingTo(myBlankId);
+    var reactionsMatchFromMe = Model?.ReactionsService.GetReactionsMatchFromMe(myBlankId);
+    var reactionsMatchToMe = Model?.ReactionsService.GetReactionsMatchToMe(myBlankId);
 }
 
 <!DOCTYPE html>
