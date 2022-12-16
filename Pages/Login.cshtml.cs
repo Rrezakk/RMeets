@@ -3,22 +3,27 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using RMeets.Contexts;
 using RMeets.Enums;
 using RMeets.Models;
+using RMeets.Repositories;
 
 namespace RMeets.Pages;
 
 public class Login : PageModel
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
-    public Login(IHttpContextAccessor httpContextAccessor, ApplicationContext applicationContext)
+    private AccountService _accountService;
+    private UserRepository _userRepository;
+    public Login(IHttpContextAccessor httpContextAccessor, ApplicationContext applicationContext, AccountService accountService, UserRepository userRepository)
     {
         _httpContextAccessor = httpContextAccessor;
         ApplicationContext = applicationContext;
+        _accountService = accountService;
+        _userRepository = userRepository;
     }
     public ApplicationContext ApplicationContext { get; set; }
     public IActionResult OnGet()
     {
-        var login = _httpContextAccessor.HttpContext?.Session.GetString("user");
-        var u = ApplicationContext.Users.FirstOrDefault(x => x.Login == login);
+        var login = SessionService.GetLogin(_httpContextAccessor);
+        var u = _userRepository.GetByLogin(login);
         var profile = u?.Profile;
         if (profile!=null)
         {
@@ -31,18 +36,16 @@ public class Login : PageModel
     }
     public IActionResult OnPostPerformLogin(string login,string password)
     {
-        var u = ApplicationContext.Users.FirstOrDefault(x => x.Login == login);
-        //return Content($"User: {u.Id} {u.Login} {u.PasswordHash}");
+        var u = _userRepository.GetByLogin(login);
         if (u == null)
         {
             return Content("Такого пользователя не существует");
         }
-        if (u.PasswordHash != password)
+        if (!_accountService.ValidateUser(login,password))
         {
             return Content("Неверный пароль");
         }
-        _httpContextAccessor.HttpContext?.Session.SetString("user",u.Login);
-        
+        SessionService.SetLogin(_httpContextAccessor,login);
         if (u?.Role == null)
         {
             ApplicationContext.Attach<User>(u);
