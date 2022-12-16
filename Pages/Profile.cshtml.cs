@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
 using RMeets.Contexts;
+using RMeets.Repositories;
 using System.Diagnostics;
 
 namespace RMeets.Pages;
@@ -9,12 +10,15 @@ namespace RMeets.Pages;
 public class Profile : PageModel
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
-    public Profile(IHttpContextAccessor httpContextAccessor, ApplicationContext applicationContext)
+    
+    public ApplicationContext ApplicationContext { get; set; }
+    private UserRepository _userRepository;
+    public Profile(IHttpContextAccessor httpContextAccessor, ApplicationContext applicationContext, UserRepository userRepository)
     {
         _httpContextAccessor = httpContextAccessor;
         ApplicationContext = applicationContext;
+        _userRepository = userRepository;
     }
-    public ApplicationContext ApplicationContext { get; set; }
     [BindProperty]
     public int profileId { get; set; }
     public IActionResult OnGet()

@@ -5,89 +5,88 @@ build_property.UsingMicrosoftNETSdkWeb = true
 build_property.ProjectTypeGuids = 
 build_property.InvariantGlobalization = 
 build_property.PlatformNeutralAssembly = 
-build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = RMeets
 build_property.RootNamespace = RMeets
-build_property.ProjectDir = C:\Users\kiril\Desktop\RMeets\
+build_property.ProjectDir = C:\Users\Admin\RiderProjects\RMeets\RMeets\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\kiril\Desktop\RMeets
+build_property.MSBuildProjectDirectory = C:\Users\Admin\RiderProjects\RMeets\RMeets
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/Blanks.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Blanks.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhbmtzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/CreateBlank.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/CreateBlank.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlQmxhbmsuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/CreateProfile.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/CreateProfile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/EditBlank.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/EditBlank.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdEJsYW5rLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/EditPhotos.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/EditPhotos.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRWRpdFBob3Rvcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/Error.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/Index.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/InitDB.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/InitDB.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5pdERCLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/Login.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/Logout.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/Moderator.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Moderator.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTW9kZXJhdG9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/Overview.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Overview.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcT3ZlcnZpZXcuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/Profile.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Profile.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUHJvZmlsZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/Register.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVnaXN0ZXIuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/ViewBlank.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/ViewBlank.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVmlld0JsYW5rLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/_ViewImports.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/_ViewStart.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/kiril/Desktop/RMeets/Pages/Shared/_Layout.cshtml]
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-frml3mv919

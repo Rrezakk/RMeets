@@ -1,41 +1,35 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RMeets.Contexts;
-using RMeets.Models;
+using RMeets.Repositories;
 
 namespace RMeets.Pages;
 
 public class Register : PageModel
 {
-    public readonly IHttpContextAccessor _httpContextAccessor;
-    public Register(IHttpContextAccessor httpContextAccessor, ApplicationContext applicationContext)
+    public readonly IHttpContextAccessor HttpContextAccessor;
+    private AccountService _accountService;
+    public UserRepository _userRepository;
+    public Register(IHttpContextAccessor httpContextAccessor, AccountService accountService, UserRepository userRepository, ApplicationContext applicationContext)
     {
-        _httpContextAccessor = httpContextAccessor;
+        HttpContextAccessor = httpContextAccessor;
+        _accountService = accountService;
+        _userRepository = userRepository;
         ApplicationContext = applicationContext;
     }
     public ApplicationContext ApplicationContext { get; set; }
-    public void OnGet()
-    {
-        
-    }
     public IActionResult OnPostPerformRegistration(string login,
         string password,string repeatPassword)
     {
         if (password != repeatPassword||string.IsNullOrEmpty(login)||string.IsNullOrEmpty(password))
         {
-            //ban
             return Content("Invalid data");
         }
-        //Debug.WriteLine($"{login} {password} {repeatPassword}");
-        var u = ApplicationContext.Users.FirstOrDefault(x => x.Login == login);
-        if (u != null)
+        if (!_accountService.CreateUser(login, repeatPassword))
         {
-            return Content("user already exists");
+            return Content("user not added: maybe exists");
         }
-        var user = new User(){Login = login,PasswordHash = repeatPassword};
-        ApplicationContext.Users.Add(user);
-        ApplicationContext.SaveChanges();
-        _httpContextAccessor.HttpContext?.Session.SetString("user",user.Login);
+        SessionService.SetLogin(HttpContextAccessor,login);
         return RedirectToPage("CreateProfile");
     }
 }

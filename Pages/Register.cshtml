@@ -3,12 +3,11 @@
 
 @{
     Layout = null;
-  
-  var login = Model._httpContextAccessor.HttpContext?.Session.GetString("user");
-  var profile = Model.ApplicationContext.Users.FirstOrDefault(u => u.Login == login)?.Profile;
+  var login = SessionService.GetLogin(Model.HttpContextAccessor);
+  var profile = Model._userRepository.GetByLogin(login)?.Profile;
   var allowRegistration = string.IsNullOrEmpty(login);
+  var profileExists = profile != null;
 }
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -38,10 +37,21 @@
 }
 else
 {
-  <form asp-page="Profile" asp-route-profileId="@profile?.Id">
-    <h2>Вы уже авторизованы</h2>
-    <input type="submit" value="В профиль"/>
-  </form>
+  if (profileExists)
+  {
+    <form asp-page="Profile" asp-route-profileId="@profile?.Id">
+      <h2>Вы уже авторизованы</h2>
+      <input type="submit" value="В профиль"/>
+    </form>
+  }
+  else
+  {
+    <form asp-page="CreateProfile">
+      <h2>Вы уже авторизованы</h2>
+      <input type="submit" value="Создать профиль"/>
+    </form>
+  }
+ 
 }
 </body>
 </html>
