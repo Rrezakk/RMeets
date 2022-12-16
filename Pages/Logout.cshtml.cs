@@ -13,6 +13,6 @@ public class Logout : PageModel
     public IActionResult OnGet()
     {
         SessionService.LogOut(_httpContext);
-        return RedirectToPage("Login");
+        return RedirectToPage("Index");
     }
 }

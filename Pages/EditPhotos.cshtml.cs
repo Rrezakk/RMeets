@@ -28,9 +28,10 @@ public class AddPhotos : PageModel
     }
     public IActionResult OnGetConsume(int blankId)
     {
-        return RedirectToPage("ViewBlank", new
+        var photos = ApplicationContext.BlankPhotos.Where(x => x.BlankId == blankId);
+        return RedirectToPage(photos.Any()? "ViewBlank":"EditPhotos", new
         {
-            blankId = blankId
+            blankId
         });
     }
     [BindProperty]

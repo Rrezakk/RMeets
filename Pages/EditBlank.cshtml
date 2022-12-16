@@ -30,7 +30,7 @@
         <select id="genderId" name="genderId" required >
           <option value="@blank?.CurrentGender?.Id" selected>@blank?.CurrentGender?.Name</option>
           @{
-            var genders = Model.ApplicationContext.Genders.Select(x => x);
+            var genders = Model._blankDataService.GetGenders();
             foreach (var gender in genders.Where(g=>g.Id!=blank.CurrentGender.Id))
             {
               <option value=@gender.Id>@gender.Name</option>
@@ -40,7 +40,7 @@
         <select id="targetId" name="targetId" required>
           <option value="@blank?.Target?.Id" selected>@blank?.Target?.Name</option>
           @{
-            var targets = Model.ApplicationContext.Targets.Select(x => x);
+            var targets = Model._blankDataService.GetTargets;
             foreach (var target in targets.Where(g=>g.Id!=blank.Target.Id))
             {
               <option value=@target.Id>@target.Name</option>
@@ -52,7 +52,7 @@
           <select name="interestIds" id="interestIds" required multiple>
             @{
               var sel = blank.Interests.ToList();
-              foreach (var interest in Model.ApplicationContext.Interests.Select(x => x))
+              foreach (var interest in Model._blankDataService.GetInterests)
               {
                 if (sel.Any(x=>x.Id==interest.Id))
                 {
@@ -70,8 +70,8 @@
           <h4>Интересные факты</h4>
           <select for="factIds" name="factIds" id="factIds" required multiple>
             @{
-              var self = blank.Interests.ToList();
-              foreach (var fact in Model.ApplicationContext.Facts.Select(x => x))
+              var self = blank.Facts.ToList();
+              foreach (var fact in Model._blankDataService.GetFacts)
               {
                 if (self.Any(x => x.Id == fact.Id))
                 {

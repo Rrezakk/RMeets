@@ -11,7 +11,7 @@ public class EditBlank : PageModel
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
     public ApplicationContext ApplicationContext { get; set; }
-    private BlankDataService _blankDataService;
+    public BlankDataService _blankDataService;
     public int? ProfileId { get; set; }
     [BindProperty]
     public int blankId { get; set; }
@@ -39,6 +39,7 @@ public class EditBlank : PageModel
         var facts = ApplicationContext.Facts.Where(x => factIds.Any(u => x.Id == u)).ToList();
         var blank = ApplicationContext.Blanks.FirstOrDefault(x => x.Id == blankId);
         if (blank == null) return Content("blank is null");
+        ApplicationContext.Attach(blank);
         blank.Description = about;
         blank.CurrentGender = ApplicationContext.Genders.FirstOrDefault(g => g.Id == genderId);
         blank.Target = ApplicationContext.Targets.FirstOrDefault(g => g.Id == targetId);
@@ -52,7 +53,8 @@ public class EditBlank : PageModel
         {
             blank.Interests.Add(interest);
         }
-        _blankDataService.EditBlank(blank);
+        ApplicationContext.Blanks.Entry(blank).State = EntityState.Modified;
+        ApplicationContext.SaveChanges();
         return RedirectToPage("EditBlank", new
         {
             blankId,
