@@ -49,5 +49,5 @@ public class AccountService
     {
         _profileRepository.Edit(profile);
     }
-    public Profile GetProfileById(int id) => _profileRepository.FindById(id);
+    public Profile? GetProfileById(int id) => _profileRepository.FindById(id);
 }
