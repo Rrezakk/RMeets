@@ -59,7 +59,7 @@
         <form asp-page="ViewBlank" asp-route-profileId="@profile.Id" asp-route-meeting="true" asp-route-previousBlankId="-1">
           <button type="submit">Знакомства</button>
         </form>
-        <form asp-page="Logout">
+        <form asp-page="/Logout" method="get">
           <button type="submit">Выйти</button>
         </form>
       </div>
