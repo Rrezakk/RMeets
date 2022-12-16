@@ -10,4 +10,8 @@ public static class SessionService
     {
         return accessor.HttpContext?.Session.GetString("user") ??"";
     }
+    public static void LogOut(IHttpContextAccessor accessor)
+    {
+        accessor?.HttpContext?.Session.Remove("user");
+    }
 }
