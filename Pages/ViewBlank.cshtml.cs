@@ -31,13 +31,20 @@ public class ViewBlank : PageModel
     public bool moderation { get; set; }
 
     [BindProperty] public int previousBlankId { get; set; }
-    public void OnGet(int blankId,bool meeting,int previousBlankId,bool? moderation)
+    public IActionResult OnGet(int blankId,bool meeting,int previousBlankId,bool? moderation)
     {
         
         this.blankId = blankId;
         this.meeting = meeting;
         this.previousBlankId = previousBlankId;
         this.moderation = moderation == true;
+
+        if (ViewerProfile?.ChosenBlankId==null)
+        {
+            return Content("Выберите или создайте активную анкету сперва");
+        }
+
+        return Page();
     }
     private void React( int fromId, int forId,ReactionTypes type)
     {

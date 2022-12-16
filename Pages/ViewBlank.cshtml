@@ -7,24 +7,28 @@
     Layout = null;
 }
 @{
-    bool showButtons =false;
-    bool additionalButton =false;
-    bool showMediaLinkOnMatch = false;
-    bool showBlank = true;
-    bool moderatorButtons = false;
+    var showButtons =false;
+    var additionalButton =false;
+    var showMediaLinkOnMatch = false;
+    var showBlank = true;
+    var moderatorButtons = false;
     var previousBlankId = Model.previousBlankId;
-    BlankViewMode mode = BlankViewMode.Idle;
-    bool success = true;
+    var mode = BlankViewMode.Idle;
+    var success = true;
     var viewerProfile = Model.ViewerProfile;
     
     var viewerProfileId = viewerProfile?.Id;
 
-    Blank blank =new Blank();
-    int blankProfileId = -1;
-    Models.Profile blankProfile = new Models.Profile();
+    var blank =new Blank();
+    var blankProfileId = -1;
+    var blankProfile = new Models.Profile();
 
     if (Model.meeting)
     {
+        if (viewerProfile?.ChosenBlankId==null)
+        {
+            return;
+        }
         var nxt = MeetingArranger.GetNextBlankId((int)viewerProfile?.ChosenBlankId,viewerProfile.Id,previousBlankId,Model.ApplicationContext);
         var nextBlankId = nxt.Item1;
         success = nxt.Item2;

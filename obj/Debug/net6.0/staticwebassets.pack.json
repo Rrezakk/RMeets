@@ -1,0 +1,377 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\RMeets.bundle.scp.css",
+      "PackagePath": "staticwebassets\\RMeets.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\0_IMG_8656.JPG",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\0_IMG_8656.JPG"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\0_SGnSIdUqluI.jpg",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\0_SGnSIdUqluI.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\0_bbcf1d06-7f7f-4b0b-9fc2-5dd67834cd6d.jpg",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\0_bbcf1d06-7f7f-4b0b-9fc2-5dd67834cd6d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\0_heart (1).png",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\0_heart (1).png"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\1_IMG_8645.JPG",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\1_IMG_8645.JPG"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\1_IMG_8656.JPG",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\1_IMG_8656.JPG"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\1_SGnSIdUqluI.jpg",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\1_SGnSIdUqluI.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\1_heart.png",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\1_heart.png"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\2_7Rj8cOQP6Yk.jpg",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\2_7Rj8cOQP6Yk.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\2_heart.png",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\2_heart.png"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\3_heart (1).png",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\3_heart (1).png"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\3_heart.png",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\3_heart.png"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\4_RKLOgOUeLfA.jpg",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\4_RKLOgOUeLfA.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\4_heart (1).png",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\4_heart (1).png"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\5_bbcf1d06-7f7f-4b0b-9fc2-5dd67834cd6d.jpg",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\5_bbcf1d06-7f7f-4b0b-9fc2-5dd67834cd6d.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\6_RKLOgOUeLfA.jpg",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\6_RKLOgOUeLfA.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\assets\\cat.jpg",
+      "PackagePath": "staticwebassets\\assets\\cat.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\assets\\dislike.svg",
+      "PackagePath": "staticwebassets\\assets\\dislike.svg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\assets\\like.svg",
+      "PackagePath": "staticwebassets\\assets\\like.svg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\css\\blanks.css",
+      "PackagePath": "staticwebassets\\css\\blanks.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\css\\createBlank.css",
+      "PackagePath": "staticwebassets\\css\\createBlank.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\css\\editPhoto.css",
+      "PackagePath": "staticwebassets\\css\\editPhoto.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\css\\global.css",
+      "PackagePath": "staticwebassets\\css\\global.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\css\\largeForm.css",
+      "PackagePath": "staticwebassets\\css\\largeForm.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\css\\reset.css",
+      "PackagePath": "staticwebassets\\css\\reset.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\css\\slider.css",
+      "PackagePath": "staticwebassets\\css\\slider.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\css\\tables.css",
+      "PackagePath": "staticwebassets\\css\\tables.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\css\\view-blank.css",
+      "PackagePath": "staticwebassets\\css\\view-blank.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.RMeets.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.build.RMeets.props",
+      "PackagePath": "build\\RMeets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildMultiTargeting.RMeets.props",
+      "PackagePath": "buildMultiTargeting\\RMeets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net6.0\\staticwebassets\\msbuild.buildTransitive.RMeets.props",
+      "PackagePath": "buildTransitive\\RMeets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}
