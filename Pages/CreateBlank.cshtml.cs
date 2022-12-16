@@ -11,26 +11,22 @@ public class CreateBlank : PageModel
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
     public ApplicationContext ApplicationContext { get; set; }
+    public BlankDataService BlankDataService;
     public int? ProfileId { get; set; }
-
     public CreateBlank(IHttpContextAccessor httpContextAccessor,
-        ApplicationContext applicationContext)
+        ApplicationContext applicationContext, BlankDataService blankDataService)
     {
         _httpContextAccessor = httpContextAccessor;
         ApplicationContext = applicationContext;
+        BlankDataService = blankDataService;
         var login =  _httpContextAccessor.HttpContext?.Session.GetString("user");
         var userId = ApplicationContext.Users.FirstOrDefault(x => x.Login == login)?.Id;
         ProfileId = ApplicationContext.Profiles.FirstOrDefault(x => x.UserRef == userId)?.Id;
         ApplicationContext.SaveChanges();
     }
-    public void OnGet()
-    {
-        
-    }
     public IActionResult OnPostCreateById(int id,int genderId,int[] interestIds,
         int[] factIds,string about,int targetId)
     {
-        ApplicationContext.SaveChanges();
         var gender = ApplicationContext.Genders.FirstOrDefault(u => u.Id == genderId);
         var target = ApplicationContext.Targets.FirstOrDefault(u => u.Id == targetId);
         var profile = ApplicationContext.Profiles.FirstOrDefault(u => u.Id == id);
@@ -47,10 +43,8 @@ public class CreateBlank : PageModel
             Facts = facts,
             Interests = interests,
         };
-        
-        var entry = ApplicationContext.Blanks.Add(blank);
-        ApplicationContext.SaveChanges();
-        var blankId = entry.Entity.Id;
+        var entry = BlankDataService.CreateBlank(blank);
+        var blankId = entry.Id;
         
         if (profile?.ChosenBlankId == null)
         {

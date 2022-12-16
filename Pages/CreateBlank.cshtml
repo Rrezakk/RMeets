@@ -27,7 +27,7 @@
         <select id="genderId" name="genderId" required>
           <option value="" disabled selected>Пол</option>
           @{
-            var genders = Model.ApplicationContext.Genders.Select(x => x);
+            var genders = Model.BlankDataService.GetGenders();
             foreach (var gender in genders)
             {
               <option value=@gender.Id>@gender.Name</option>
@@ -37,7 +37,7 @@
         <select id="targetId" name="targetId" required>
           <option value="" disabled selected>Цель знакомства</option>
           @{
-            var targets = Model.ApplicationContext.Targets.Select(x => x);
+            var targets = Model.BlankDataService.GetTargets;
             foreach (var target in targets)
             {
               <option value=@target.Id>@target.Name</option>
@@ -47,7 +47,7 @@
         <div>
           <h4>Интересы</h4>
           <select name="interestIds" id="interestIds" required multiple>
-            @foreach (var interest in Model.ApplicationContext.Interests.Select(x => x))
+            @foreach (var interest in Model.BlankDataService.GetInterests)
             {
               <option value="@interest.Id">@interest.Name</option>
             }
@@ -56,7 +56,7 @@
         <div>
           <h4>Интересные факты</h4>
           <select for="factIds" name="factIds" id="factIds" required multiple>
-            @foreach (var fact in Model.ApplicationContext.Facts.Select(x => x))
+            @foreach (var fact in Model.BlankDataService.GetFacts)
             {
               <option value="@fact.Id">@fact.Name</option>
             }

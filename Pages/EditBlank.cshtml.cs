@@ -11,14 +11,16 @@ public class EditBlank : PageModel
 {
     private readonly IHttpContextAccessor _httpContextAccessor;
     public ApplicationContext ApplicationContext { get; set; }
+    private BlankDataService _blankDataService;
     public int? ProfileId { get; set; }
     [BindProperty]
     public int blankId { get; set; }
     public EditBlank(IHttpContextAccessor httpContextAccessor,
-        ApplicationContext applicationContext)
+        ApplicationContext applicationContext, BlankDataService blankDataService)
     {
         _httpContextAccessor = httpContextAccessor;
         ApplicationContext = applicationContext;
+        _blankDataService = blankDataService;
         var login =  _httpContextAccessor.HttpContext?.Session.GetString("user");
         var userId = ApplicationContext.Users.FirstOrDefault(x => x.Login == login)?.Id;
         ProfileId = ApplicationContext.Profiles.FirstOrDefault(x => x.UserRef == userId)?.Id;
@@ -33,12 +35,10 @@ public class EditBlank : PageModel
     public IActionResult OnPostEdit(int id,int genderId,int[] interestIds,
         int[] factIds,string about,int targetId)
     {
-        Debug.WriteLine($"id: {id} genderId: {genderId}");
         var interests = ApplicationContext.Interests.Where(x => interestIds.Any(u => x.Id == u)).ToList();
         var facts = ApplicationContext.Facts.Where(x => factIds.Any(u => x.Id == u)).ToList();
         var blank = ApplicationContext.Blanks.FirstOrDefault(x => x.Id == blankId);
         if (blank == null) return Content("blank is null");
-        ApplicationContext.Attach(blank);
         blank.Description = about;
         blank.CurrentGender = ApplicationContext.Genders.FirstOrDefault(g => g.Id == genderId);
         blank.Target = ApplicationContext.Targets.FirstOrDefault(g => g.Id == targetId);
@@ -52,14 +52,10 @@ public class EditBlank : PageModel
         {
             blank.Interests.Add(interest);
         }
-        
-        ApplicationContext.Blanks.Entry(blank).State = EntityState.Modified;
-        ApplicationContext.SaveChanges();
-        Debug.WriteLine(id);
-        Debug.WriteLine("BlankId = " +blankId);
+        _blankDataService.EditBlank(blank);
         return RedirectToPage("EditBlank", new
         {
-            blankId = blankId,
+            blankId,
             ProfileId = id
         });
     }
@@ -67,12 +63,7 @@ public class EditBlank : PageModel
     {
         return RedirectToPage($"EditPhotos", new
         {
-            blankId = blankId
+            blankId
         });
     }
-    //return RedirectToPage("EditPhotos",new { blankId = blankId.ToString()});
-    //return RedirectToPage("Blanks", new
-    // {
-    //     ProfileId = id
-    // });
 }

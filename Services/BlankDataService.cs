@@ -30,4 +30,12 @@ public class BlankDataService
     public List<City> GetCities => _cityRepository.GetAll();
     public List<Target> GetTargets => _targetRepository.GetAll();
     public List<Blank> GetProfileBlanks(int id) => _blankRepository.GetByProfileId(id);
+    public Blank CreateBlank(Blank blank)
+    {
+        return _blankRepository.Create(blank);
+    }
+    public Blank EditBlank(Blank blank)
+    {
+        return _blankRepository.Edit(blank);
+    }
 }
