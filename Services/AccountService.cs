@@ -41,4 +41,13 @@ public class AccountService
         var hash = sha.ComputeHash(textData);
         return BitConverter.ToString(hash).Replace("-", string.Empty);
     }
+    public Profile CreateProfile(Profile p)
+    {
+        return _profileRepository.Add(p);
+    }
+    public void EditProfile(Profile profile)
+    {
+        _profileRepository.Edit(profile);
+    }
+    public Profile GetProfileById(int id) => _profileRepository.FindById(id);
 }

@@ -3,7 +3,7 @@
 
 @{
     Layout = null;
-  var profile = Model.ApplicationContext.Profiles.Find(Model.profileId);
+  var profile = Model._accountService.GetProfileById(Model.profileId);
 }
 
 <!DOCTYPE html>
@@ -30,7 +30,7 @@
         <select name="gender" required>
           <option value="@profile?.Gender.Id" disabled selected>@profile?.Gender.Name</option>
           @{
-            var genders = Model.ApplicationContext.Genders.AsQueryable().Select(x => x);
+            var genders = Model._BlankDataService.GetGenders();
             foreach (var gender in genders)
             {
               <option value=@gender.Id>@gender.Name</option>
@@ -40,7 +40,7 @@
         <select name="city">
           <option value="@profile?.City.Id" disabled selected>@profile?.City.Name</option>
           @{
-            var cities = Model.ApplicationContext.CitySet.AsQueryable().Select(x => x);
+            var cities = Model._BlankDataService.GetCities;
             foreach (var city in cities)
             {
               <option value=@city.Id>@city.Name</option>

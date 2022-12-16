@@ -1,4 +1,5 @@
-﻿using RMeets.Repositories;
+﻿using RMeets.Models;
+using RMeets.Repositories;
 
 namespace RMeets;
 
@@ -21,5 +22,9 @@ public class BlankDataService
         _profileRepository = profileRepository;
         _photosRepository = photosRepository;
     }
-    
+    public List<Gender> GetGenders() => _genderRepository.GetAll();
+    public List<Interest> GetInterests => _interestRepository.GetAll();
+    public List<Fact> GetFacts => _factRepository.GetAll();
+    public List<City> GetCities => _cityRepository.GetAll();
+    public List<Target> GetTargets => _targetRepository.GetAll();
 }

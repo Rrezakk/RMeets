@@ -13,19 +13,23 @@ public class Profile : PageModel
     
     public ApplicationContext ApplicationContext { get; set; }
     private UserRepository _userRepository;
-    public Profile(IHttpContextAccessor httpContextAccessor, ApplicationContext applicationContext, UserRepository userRepository)
+    public AccountService _accountService;
+    public BlankDataService _BlankDataService;
+    public Profile(IHttpContextAccessor httpContextAccessor, ApplicationContext applicationContext, UserRepository userRepository, AccountService accountService, BlankDataService blankDataService)
     {
         _httpContextAccessor = httpContextAccessor;
         ApplicationContext = applicationContext;
         _userRepository = userRepository;
+        _accountService = accountService;
+        _BlankDataService = blankDataService;
     }
     [BindProperty]
     public int profileId { get; set; }
     public IActionResult OnGet()
     {
-        var login = _httpContextAccessor.HttpContext?.Session.GetString("user");
-        var user = ApplicationContext.Users.FirstOrDefault(x => x.Login == login)?.Id;
-        var p = ApplicationContext.Profiles.FirstOrDefault(x => x.UserRef == user);
+        var login = SessionService.GetLogin(_httpContextAccessor);
+        var user = _userRepository.GetByLogin(login);
+        var p = user?.Profile;
         if (p == null)
         {
             return RedirectToPage("CreateProfile");
@@ -35,21 +39,16 @@ public class Profile : PageModel
     }
     public IActionResult OnPostEditProfile(string name,int age,int city,int gender,string contact,int ProfileId)
     {
-        Debug.WriteLine($"Profile id: {ProfileId}");
         var gen = ApplicationContext.Genders.FirstOrDefault(g => g.Id == gender);
         var cit = ApplicationContext.CitySet.FirstOrDefault(c => c.Id == city);
         var profile = ApplicationContext.Profiles.FirstOrDefault(x => x.Id == ProfileId);
-        Debug.WriteLine($"Name: {name} Age: {age} Gender: {gender} City: {city}");
         if (profile == null) return Content("profile null");
         profile.Name = name;
         profile.Age = age;
         profile.SocialMediaLink = contact;
         if (cit != null) profile.City = cit;
         if (gen != null) profile.Gender = gen;
-        ApplicationContext.Profiles.Attach(profile);
-        ApplicationContext.Profiles.Entry(profile).State = EntityState.Modified;
-        ApplicationContext.SaveChanges();
-        Debug.WriteLine($"Name: {name} Age: {age} Gender: {gender} City: {city}");
+        _accountService.EditProfile(profile);
         return RedirectToPage("Profile",new
         {
             profileId = profile.Id
