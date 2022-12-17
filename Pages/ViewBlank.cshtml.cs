@@ -39,11 +39,10 @@ public class ViewBlank : PageModel
         this.previousBlankId = previousBlankId;
         this.moderation = moderation == true;
 
-        if (ViewerProfile?.ChosenBlankId==null)
+        if (ViewerProfile?.ChosenBlankId==null &&!this.moderation)
         {
             return Content("Выберите или создайте активную анкету сперва");
         }
-
         return Page();
     }
     private void React( int fromId, int forId,ReactionTypes type)

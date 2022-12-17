@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RMeets.Contexts;
 
@@ -34,6 +35,46 @@ public class Blanks : PageModel
             ApplicationContext.Update(profile);
             ApplicationContext.SaveChanges();
         }
+
+        return RedirectToPage("Blanks", new
+        {
+            profileId
+        });
+    }
+
+    public IActionResult OnGetDeleteBlank(int profileId,int blankId)
+    {
+        var profile = _accountService.GetProfileById(profileId);
+        Debug.WriteLine($"---------------------------Profile: {profile.Id} {profile.ChosenBlankId} {blankId}");
+        if (profile != null)
+        {
+            ApplicationContext.Attach(profile);
+            if (blankId==profile.ChosenBlankId)
+            {
+                profile.ChosenBlankId = null;
+            }
+            ApplicationContext.Update(profile);
+            ApplicationContext.SaveChanges();
+            var blank = ApplicationContext.Blanks.Find(blankId);
+            if (blank!=null)
+            {
+                ApplicationContext.Remove(blank);
+            }
+
+            var photos = ApplicationContext.BlankPhotos.Where(x => x.BlankId == blankId);
+            foreach (var p in photos)
+            {
+                ApplicationContext.Remove(p);
+            }
+
+            var reactions = ApplicationContext.Reactions.Where(x => x.To != null && (x.From.Id == blankId || x.To.Id == blankId));
+            foreach (var r in reactions)
+            {
+                ApplicationContext.Remove(r);
+            }
+            ApplicationContext.SaveChanges();
+        }
+        Debug.WriteLine($"---------------------------Profile: {profile.Id} {profile.ChosenBlankId} {blankId}");
 
         return RedirectToPage("Blanks", new
         {

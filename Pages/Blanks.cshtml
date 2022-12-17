@@ -54,7 +54,8 @@
                   <a asp-page="ViewBlank" asp-route-blankId="@b.Id"><button >Посмотреть</button></a>
                   <a asp-page="EditBlank" asp-route-blankId="@b.Id"><button >Изменить</button></a>
                   <a asp-page-handler="ChooseMainBlank" asp-route-profileId="@b.ProfileId" asp-route-blankId="@b.Id"><button >Выбрать текущей</button></a>
-                </td>
+                  <a asp-page-handler="DeleteBlank" asp-route-profileId="@b.ProfileId" asp-route-blankId="@b.Id"><button >Удалить</button></a>
+                  </td>
               </tr>
               id++;
             }

@@ -2,6 +2,8 @@
 
 public enum BlankViewMode
 {
+    HaveNoBlankSelected,
+    BlockedByModerator,
     Self,
     Voting,
     Match,

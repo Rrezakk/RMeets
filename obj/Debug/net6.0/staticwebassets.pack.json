@@ -29,10 +29,6 @@
       "PackagePath": "staticwebassets\\UploadedPhotos\\1_IMG_8656.JPG"
     },
     {
-      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\1_SGnSIdUqluI.jpg",
-      "PackagePath": "staticwebassets\\UploadedPhotos\\1_SGnSIdUqluI.jpg"
-    },
-    {
       "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\1_heart.png",
       "PackagePath": "staticwebassets\\UploadedPhotos\\1_heart.png"
     },
@@ -45,6 +41,14 @@
       "PackagePath": "staticwebassets\\UploadedPhotos\\2_heart.png"
     },
     {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\2_Точечный рисунок.jpg",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\2_Точечный рисунок.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\3_7Rj8cOQP6Yk.jpg",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\3_7Rj8cOQP6Yk.jpg"
+    },
+    {
       "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\3_heart (1).png",
       "PackagePath": "staticwebassets\\UploadedPhotos\\3_heart (1).png"
     },
@@ -55,6 +59,10 @@
     {
       "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\4_RKLOgOUeLfA.jpg",
       "PackagePath": "staticwebassets\\UploadedPhotos\\4_RKLOgOUeLfA.jpg"
+    },
+    {
+      "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\4_SGnSIdUqluI.jpg",
+      "PackagePath": "staticwebassets\\UploadedPhotos\\4_SGnSIdUqluI.jpg"
     },
     {
       "Id": "C:\\Users\\kiril\\Desktop\\RMeets\\wwwroot\\UploadedPhotos\\4_heart (1).png",

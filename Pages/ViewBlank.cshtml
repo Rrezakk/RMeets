@@ -12,6 +12,8 @@
     var showMediaLinkOnMatch = false;
     var showBlank = true;
     var moderatorButtons = false;
+    var haveNoBlankSelected = false;
+    var choosenBlankBlockedByModerator = false;
     var previousBlankId = Model.previousBlankId;
     var mode = BlankViewMode.Idle;
     var success = true;
@@ -25,10 +27,6 @@
 
     if (Model.meeting)
     {
-        if (viewerProfile?.ChosenBlankId==null)
-        {
-            return;
-        }
         var nxt = MeetingArranger.GetNextBlankId((int)viewerProfile?.ChosenBlankId,viewerProfile.Id,previousBlankId,Model.ApplicationContext);
         var nextBlankId = nxt.Item1;
         success = nxt.Item2;
@@ -85,6 +83,17 @@
             }
         }
 
+        if (viewerProfile?.ChosenBlankId==null)
+        {
+            mode = BlankViewMode.HaveNoBlankSelected;
+            goto moderation;
+        }
+        var blankStatus = Model.ApplicationContext.Blanks.Find(viewerProfile.ChosenBlankId)?.BlockedByModerator == true;
+        if (blankStatus)
+        {
+            mode = BlankViewMode.BlockedByModerator;
+            
+        }
         if (match)
             mode = BlankViewMode.Match;
         else if(mode == BlankViewMode.Idle)
@@ -107,6 +116,9 @@
         case BlankViewMode.Match:
             additionalButton = true;
             showMediaLinkOnMatch = true;
+            showBlank = true;
+            moderatorButtons = false;
+            haveNoBlankSelected = false;
             break;
         case BlankViewMode.EndOfBlanks:
             additionalButton = false;
@@ -124,10 +136,37 @@
             showBlank = true;
             moderatorButtons = true;
             break;
+            case BlankViewMode.HaveNoBlankSelected:
+                additionalButton = false;
+                showMediaLinkOnMatch = false;
+                showBlank = false;
+                moderatorButtons = false;
+                haveNoBlankSelected = true;
+                break;
+                case BlankViewMode.BlockedByModerator:
+                    choosenBlankBlockedByModerator = true;
+                    break;
     }
 }
 <!DOCTYPE html>
-@if ( blank.BlockedByModerator==true && mode is BlankViewMode.Voting or BlankViewMode.Match )
+@if(choosenBlankBlockedByModerator){
+    <div>
+        <h3>Выбранная вами анкета заблокирована модератором</h3>
+        <form method="get">
+            <button asp-page="Profile" asp-route-profileId="@Model.ViewerProfile.Id">В профиль</button>
+        </form>
+    </div>
+}
+else if (haveNoBlankSelected && mode!=BlankViewMode.Moderation)
+{
+    <div>
+        <h3>Сперва вы должны выбрать или создать анкету в списке ваших анкет</h3>
+        <form method="get">
+            <button asp-page="Profile" asp-route-profileId="@Model.ViewerProfile.Id">В профиль</button>
+        </form>
+    </div>
+}
+else if ( blank.BlockedByModerator==true && mode is BlankViewMode.Voting or BlankViewMode.Match )
 {
     <div>
         <p>
@@ -180,7 +219,6 @@ else if (showBlank)
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                 </div>
-
                 <div class="actions">
                     @if (showButtons)
                     {
@@ -214,7 +252,6 @@ else if (showBlank)
                                                 <input type="submit" value="Не модерировать">
                                             </form>
                                         }
-
                     @if (showButtons)
                     {
                         <form method="post" asp-page="ViewBlank" asp-page-handler="Dislike" asp-route-fromId="@viewerProfile?.ChosenBlankId" asp-route-forId="@blank.Id" asp-route-previousBlankId="@previousBlankId">
@@ -223,14 +260,13 @@ else if (showBlank)
                             </button>
                         </form>
                     }
-                    
                 </div>
 
                 @if (showMediaLinkOnMatch)
                 {
                     <div class="match">
                         <h2>Мэтч</h2>
-                        <a href="@blankProfile?.SocialMediaLink">@blankProfile?.SocialMediaLink</a>
+                        <a href="https://@blankProfile?.SocialMediaLink">@blankProfile?.SocialMediaLink</a>
                     </div>
                 }
             </div>
