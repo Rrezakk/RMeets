@@ -1,7 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
 namespace RMeets.Models;
-
 public class Profile
 {
     [Key]

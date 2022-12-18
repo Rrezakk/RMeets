@@ -68,16 +68,16 @@
     
         var reaction = Model.ApplicationContext.Reactions.FirstOrDefault(x=>(x.From.Id == blank.Id && x.To!=null&&  x.To.Id == viewerProfile.ChosenBlankId));
         var reaction2 = Model.ApplicationContext.Reactions.FirstOrDefault(x => (x.From.Id == viewerProfile.ChosenBlankId  && x.To!=null && x.To.Id ==  blank.Id));
-        if (reaction!=null)//была какая=то реакция в сторону смотрящего
+        if (reaction!=null &&reaction.ReactionType2!=null)//была какая=то реакция в сторону смотрящего
         {
             if (reaction.ReactionType1 == reaction.ReactionType2 &&reaction.ReactionType1==ReactionTypes.Like)
             {
                 match = true;
             }
         }
-        else if (reaction2!=null)//была какая=то реакция со стороны смотрящего
+        else if (reaction2!=null && reaction2.ReactionType2!=null)//была какая=то реакция со стороны смотрящего
         {
-            if (reaction2.ReactionType1 == reaction2.ReactionType2&&reaction.ReactionType1==ReactionTypes.Like)
+            if (reaction2.ReactionType1 == reaction2.ReactionType2&&reaction2.ReactionType1==ReactionTypes.Like)
             {
                 match = true;
             }

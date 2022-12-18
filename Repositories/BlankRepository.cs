@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RMeets.Contexts;
 using RMeets.Models;
-
 namespace RMeets.Repositories;
-
 public class BlankRepository
 {
     private readonly ApplicationContext _context;

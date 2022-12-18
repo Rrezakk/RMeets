@@ -2,10 +2,7 @@
 using RMeets.Repositories;
 using System.Text;
 using System.Security.Cryptography;
-
-
 namespace RMeets;
-
 public class AccountService
 {
     private UserRepository _userRepository;

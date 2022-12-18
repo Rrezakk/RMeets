@@ -20,7 +20,7 @@ namespace RMeets.Contexts
             : base(options)
         {
             //Database.EnsureDeleted();
-            //Database.EnsureCreated();   // создаем базу данных при первом обращении
+            Database.EnsureCreated();   // создаем базу данных при первом обращении
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
