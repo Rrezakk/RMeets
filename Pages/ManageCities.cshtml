@@ -1,0 +1,52 @@
+﻿@page "{handler?}"
+@model RMeets.Pages.ManageCities
+
+@{
+    Layout = null;
+  var cities = Model._context.CitySet.ToList();
+}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/css/global.css" />
+    <link rel="stylesheet" href="/css/largeForm.css" />
+    <link rel="stylesheet" href="/css/tables.css" />
+    <link rel="stylesheet" href="/css/blanks.css" />
+    <title>Blanks</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <div class="content">
+        <table>
+          <thead>
+          <tr>
+            <td>ID</td>
+            <td>Город</td>
+          </tr>
+          </thead>
+          <tbody>
+          @foreach (var fact in cities)
+          {
+            <tr>
+              <td>@fact.Id</td>
+              <td>@fact.Name</td>
+            </tr>
+          }
+          </tbody>
+        </table>
+        <form method="post" asp-page-handler="Add">
+          <input id="fact" name="fact" type="text" required/>
+          <input type="submit" value="Добавить"/>
+        </form>
+      </div>
+      <a asp-page="Moderator">Назад</a>
+    </div>
+  </body>
+</html>

@@ -29,7 +29,7 @@ public class AccountService
         var user = _userRepository.GetByLogin(login);
         return user != null&&user.PasswordHash==pwh;
     }
-    private static string GetStringSha256Hash(string text)
+    public static string GetStringSha256Hash(string text)
     {
         if (string.IsNullOrEmpty(text))
             return string.Empty;

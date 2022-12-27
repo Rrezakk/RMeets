@@ -7,6 +7,10 @@ public static class MeetingArranger
     public static (int, bool) GetNextBlankId(int currentBlankId, int currentProfileId, int previousBlankId,
         ApplicationContext context)
     {
+        if (currentBlankId == -1)
+        {
+            return (-1,false);
+        }
         var reactedIds = context.Reactions.Where(x => (x.From.Id == currentBlankId && x.To != null))
             .Select(x => x.To!.Id).ToList();
         var r2Ids = context.Reactions.Where(x => x.To != null && x.To.Id == currentBlankId && x.ReactionType2 != null)

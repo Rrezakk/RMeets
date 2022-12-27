@@ -19,6 +19,10 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQmxhbmtzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/ChangeModeratorCredentials.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2hhbmdlTW9kZXJhdG9yQ3JlZGVudGlhbHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/CreateBlank.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ3JlYXRlQmxhbmsuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -53,6 +57,18 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/ManageCities.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlQ2l0aWVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/ManageFacts.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlRmFjdHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/ManageInterests.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFuYWdlSW50ZXJlc3RzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Admin/RiderProjects/RMeets/RMeets/Pages/Moderator.cshtml]

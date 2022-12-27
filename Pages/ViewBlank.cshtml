@@ -27,7 +27,7 @@
 
     if (Model.meeting)
     {
-        var nxt = MeetingArranger.GetNextBlankId((int)viewerProfile?.ChosenBlankId,viewerProfile.Id,previousBlankId,Model.ApplicationContext);
+        var nxt = MeetingArranger.GetNextBlankId(viewerProfile?.ChosenBlankId??-1,viewerProfile.Id,previousBlankId,Model.ApplicationContext);
         var nextBlankId = nxt.Item1;
         success = nxt.Item2;
         if (success)

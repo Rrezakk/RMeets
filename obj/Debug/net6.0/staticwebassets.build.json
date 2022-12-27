@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "F/R6Y8uDXH8GsXIgh2IiCwyb35gjCHzHGFzuKOad2hk=",
+  "Hash": "3srBjtHKUvSczDTkNsPsINyqmTllY/CLbYP5b/Unh5E=",
   "Source": "RMeets",
   "BasePath": "_content/RMeets",
   "Mode": "Default",
@@ -1530,6 +1530,23 @@
       "OriginalItemSpec": "wwwroot\\UploadedPhotos\\4_heart (1).png"
     },
     {
+      "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\4_Jason Statham02.jpg",
+      "SourceId": "RMeets",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\",
+      "BasePath": "_content/RMeets",
+      "RelativePath": "UploadedPhotos/4_Jason Statham02.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UploadedPhotos\\4_Jason Statham02.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\4_RKLOgOUeLfA.jpg",
       "SourceId": "RMeets",
       "SourceType": "Discovered",
@@ -1579,6 +1596,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\UploadedPhotos\\5_bbcf1d06-7f7f-4b0b-9fc2-5dd67834cd6d.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\5_Jason Statham02.jpg",
+      "SourceId": "RMeets",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\",
+      "BasePath": "_content/RMeets",
+      "RelativePath": "UploadedPhotos/5_Jason Statham02.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UploadedPhotos\\5_Jason Statham02.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\6_Точечный рисунок.bmp",
+      "SourceId": "RMeets",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\",
+      "BasePath": "_content/RMeets",
+      "RelativePath": "UploadedPhotos/6_Точечный рисунок.bmp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UploadedPhotos\\6_Точечный рисунок.bmp"
     },
     {
       "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\6_RKLOgOUeLfA.jpg",

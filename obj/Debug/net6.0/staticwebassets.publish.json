@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "7PMgnpgKym4hbTOj/HLgzoVTfLyinxFhS9tA52ynpIM=",
+  "Hash": "4FMKZE93z7TGUCASp/kSQCT4dHJWLhShus9tbCHq390=",
   "Source": "RMeets",
   "BasePath": "_content/RMeets",
   "Mode": "Default",
@@ -1494,6 +1494,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\UploadedPhotos\\3_heart.png"
+    },
+    {
+      "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\3_SGnSIdUqluI.jpg",
+      "SourceId": "RMeets",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\",
+      "BasePath": "_content/RMeets",
+      "RelativePath": "UploadedPhotos/3_SGnSIdUqluI.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\UploadedPhotos\\3_SGnSIdUqluI.jpg"
     },
     {
       "Identity": "C:\\Users\\Admin\\RiderProjects\\RMeets\\RMeets\\wwwroot\\UploadedPhotos\\4_heart (1).png",
